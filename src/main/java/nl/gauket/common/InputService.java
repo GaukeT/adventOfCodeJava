@@ -17,18 +17,20 @@ public class InputService extends Timer {
     }
 
     public void prepareDailyInput(int year, int day) {
-        start();
         if (!checkIfInputExists(year, day)) {
             // get input from AOC
-            if (!downloadInputFromServer(year, day))
-                throw new RuntimeException("Something went wrong downloading input from AOC server");
+            start();
+            downloadInputFromServer(year, day);
+            stop("Download file from server in");
+            System.exit(0);
         }
-        stop("Download file from server in");
     }
 
-    private boolean downloadInputFromServer(int year, int day) {
+    private void downloadInputFromServer(int year, int day) {
         String urlAoc = String.format(url, year, day);
-        return requestInputFromServer(urlAoc, year, day);
+
+        if (!requestInputFromServer(urlAoc, year, day))
+            throw new RuntimeException("Something went wrong downloading input from AOC server");
     }
 
     private boolean requestInputFromServer(String urlAoc, int year, int day) {
