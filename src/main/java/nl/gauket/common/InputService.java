@@ -8,7 +8,7 @@ import java.net.URL;
 import static nl.gauket.common.InputWriter.checkIfInputExists;
 import static nl.gauket.common.InputWriter.writeToFile;
 
-public class InputService {
+public class InputService extends Timer {
     private static final String url = "https://adventofcode.com/%s/day/%s/input";
     private final String session;
 
@@ -17,11 +17,13 @@ public class InputService {
     }
 
     public void prepareDailyInput(int year, int day) {
+        start();
         if (!checkIfInputExists(year, day)) {
             // get input from AOC
             if (!downloadInputFromServer(year, day))
                 throw new RuntimeException("Something went wrong downloading input from AOC server");
         }
+        stop("Download file from server in");
     }
 
     private boolean downloadInputFromServer(int year, int day) {
