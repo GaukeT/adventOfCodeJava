@@ -7,8 +7,7 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 
 public class adventOfCodeService {
-    private static final String SESSION =
-            "53616c7465645f5f481d3cbf6d9d7f2dde93d32a687cf41eb3a3a34326c627699e9c87f082ce13ec57759e6b35fb4f1e";
+    private static final String SESSION = "**********************";
     private static final String url = "https://adventofcode.com/%s/day/%s/input";
     InputWriter inputWriter;
 
