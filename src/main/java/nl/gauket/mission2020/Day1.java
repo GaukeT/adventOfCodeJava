@@ -20,7 +20,7 @@ public class Day1 extends Day {
     }
 
     private static void part1() throws IOException, URISyntaxException {
-        startTimer();
+        start(YEAR20, DAY);
         // part 1 // 787776
         var input = InputReader.readInputAsIntStream(YEAR20, DAY).toArray();
         var result = solve(input, 2);
@@ -30,8 +30,7 @@ public class Day1 extends Day {
     }
 
     private static void part2() throws IOException, URISyntaxException {
-        startTimer();
-        // part 1 // 262738554
+        start(YEAR20, DAY);        // part 1 // 262738554
         var input = InputReader.readInputAsIntStream(YEAR20, DAY).toArray();
         var result = solve(input, 3);
 

@@ -6,6 +6,12 @@ public class Day {
 
     private static long start;
 
+    public static void start(int year, int day) {
+        new adventOfCodeService().prepareDailyInput(year, day);
+
+        startTimer();
+    }
+
     public static void startTimer() {
         start = System.currentTimeMillis();
     }

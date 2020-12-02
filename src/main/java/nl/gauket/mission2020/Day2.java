@@ -6,6 +6,7 @@ import nl.gauket.common.InputReader;
 import java.io.IOException;
 import java.net.URISyntaxException;
 import java.util.List;
+import java.util.function.Predicate;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -24,7 +25,7 @@ public class Day2 extends Day {
     }
 
     private static void part1() throws IOException, URISyntaxException {
-        startTimer();
+        start(YEAR20, DAY);
         // part 1 // 396
         var input = InputReader.readInputAsStringList(YEAR20, DAY);
         var result = solve(input, 1);
@@ -34,8 +35,7 @@ public class Day2 extends Day {
     }
 
     private static void part2() throws IOException, URISyntaxException {
-        startTimer();
-        // part 2 // 428
+        start(YEAR20, DAY);        // part 2 // 428
         var input = InputReader.readInputAsStringList(YEAR20, DAY);
         var result = solve(input, 2);
 

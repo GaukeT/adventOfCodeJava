@@ -29,8 +29,6 @@ public class InputReader {
                 Paths.get(ClassLoader.getSystemResource(getFilename(year, day)).toURI()));
     }
 
-
-
     private String[] convert(String values) {
         return values.split(",");
     }

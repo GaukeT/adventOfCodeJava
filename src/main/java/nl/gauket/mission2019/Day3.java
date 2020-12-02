@@ -16,7 +16,7 @@ public class Day3 extends Day {
     }
 
     private static void part1() {
-        startTimer();
+        start(YEAR19, DAY);
 
         String[] input = {"R75","D30","R83","U83","L12","D49","R71","U7","L72"};
         List<Point> pointsVisited = calculateRoute(input);

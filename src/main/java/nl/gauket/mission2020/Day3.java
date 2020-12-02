@@ -13,7 +13,7 @@ public class Day3 extends Day {
     }
 
     private static void part1() {
-        startTimer();
+        start(YEAR20, DAY);
         // part 1 //
         var result = "";
 
@@ -22,7 +22,7 @@ public class Day3 extends Day {
     }
 
     private static void part2() {
-        startTimer();
+        start(YEAR20, DAY);
         // part 2 //
         var result = "";
 
