@@ -16,17 +16,17 @@ public class Day3 extends Day {
     }
 
     private static void part1() {
-        start(YEAR19, DAY);
+        start();
 
-        String[] input = {"R75","D30","R83","U83","L12","D49","R71","U7","L72"};
+        String[] input = {"R75", "D30", "R83", "U83", "L12", "D49", "R71", "U7", "L72"};
         List<Point> pointsVisited = calculateRoute(input);
 
         printResult(DAY, "");
-        stopTimer();
+        stop();
     }
 
     private static List<Point> calculateRoute(String[] input) {
-    // https://www.youtube.com/watch?v=H4vjv81SML4&ab_channel=TurkeyDev
+        // https://www.youtube.com/watch?v=H4vjv81SML4&ab_channel=TurkeyDev
 
         Point currentPosition = new Point(0, 0);
 

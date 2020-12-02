@@ -12,11 +12,11 @@ public class Day1 extends Day {
     private static final int DAY = 1;
 
     public static void main(String[] args) throws IOException, URISyntaxException {
-        start(YEAR19, DAY);
+        start();
         int result = InputReader.readInputAsIntStream(YEAR19, DAY)
-                        .reduce(0, (t, m) -> t + calculateFuelBy(m));
+                .reduce(0, (t, m) -> t + calculateFuelBy(m));
 
-        stopTimer();
+        stop();
         printResult(DAY, result);
     }
 

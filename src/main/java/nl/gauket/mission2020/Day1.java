@@ -15,26 +15,28 @@ public class Day1 extends Day {
     private static final int DAY = 1;
 
     public static void main(String[] args) throws IOException, URISyntaxException {
+        prepareDaily(args[0], YEAR20, DAY);
         part1();
         part2();
     }
 
     private static void part1() throws IOException, URISyntaxException {
-        start(YEAR20, DAY);
+        start();
         // part 1 // 787776
         var input = InputReader.readInputAsIntStream(YEAR20, DAY).toArray();
         var result = solve(input, 2);
 
-        stopTimer();
+        stop();
         printResult(DAY, result);
     }
 
     private static void part2() throws IOException, URISyntaxException {
-        start(YEAR20, DAY);        // part 1 // 262738554
+        start();
+        // part 1 // 262738554
         var input = InputReader.readInputAsIntStream(YEAR20, DAY).toArray();
         var result = solve(input, 3);
 
-        stopTimer();
+        stop();
         printResult(DAY, result);
     }
 

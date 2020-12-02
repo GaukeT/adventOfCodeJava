@@ -7,18 +7,20 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 
 public class adventOfCodeService {
-    private static final String SESSION = "**********************";
     private static final String url = "https://adventofcode.com/%s/day/%s/input";
+    private String session = "";
     InputWriter inputWriter;
 
-    public adventOfCodeService() {
+    public adventOfCodeService(String session) {
+        this.session = session;
         this.inputWriter = new InputWriter();
     }
 
     public void prepareDailyInput(int year, int day) {
         if (!inputWriter.checkIfInputExists(year, day)) {
             // get input from AOC
-            if (!downloadInputFromServer(year, day)) throw new RuntimeException("Something went wrong downloading input from AOC server");
+            if (!downloadInputFromServer(year, day))
+                throw new RuntimeException("Something went wrong downloading input from AOC server");
         }
     }
 
@@ -34,7 +36,7 @@ public class adventOfCodeService {
             con = (HttpURLConnection) url.openConnection();
 
             con.setRequestMethod("GET");
-            con.setRequestProperty("Cookie", "session="+SESSION);
+            con.setRequestProperty("Cookie", "session=" + session);
 
             int status = con.getResponseCode();
 

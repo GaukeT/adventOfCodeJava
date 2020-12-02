@@ -6,7 +6,6 @@ import nl.gauket.common.InputReader;
 import java.io.IOException;
 import java.net.URISyntaxException;
 import java.util.List;
-import java.util.function.Predicate;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -20,26 +19,28 @@ public class Day2 extends Day {
     private static final Pattern p = compile("^(\\d{1,2})-(\\d{1,2}) (\\D): (\\D.*)$");
 
     public static void main(String[] args) throws IOException, URISyntaxException {
+        prepareDaily(args[0], YEAR20, DAY);
         part1();
         part2();
     }
 
     private static void part1() throws IOException, URISyntaxException {
-        start(YEAR20, DAY);
+        start();
         // part 1 // 396
         var input = InputReader.readInputAsStringList(YEAR20, DAY);
         var result = solve(input, 1);
 
-        stopTimer();
+        stop();
         printResult(DAY, result);
     }
 
     private static void part2() throws IOException, URISyntaxException {
-        start(YEAR20, DAY);        // part 2 // 428
+        start();
+        // part 2 // 428
         var input = InputReader.readInputAsStringList(YEAR20, DAY);
         var result = solve(input, 2);
 
-        stopTimer();
+        stop();
         printResult(DAY, result);
     }
 
@@ -71,8 +72,8 @@ public class Day2 extends Day {
             var count = countOccurences(letter, pw);
             return count >= min && count <= max;
         } else {
-            var first = String.valueOf(pw.charAt(min-1));
-            var second = String.valueOf(pw.charAt(max-1));
+            var first = String.valueOf(pw.charAt(min - 1));
+            var second = String.valueOf(pw.charAt(max - 1));
 
             return letter.equals(first) ^ letter.equals(second);
         }

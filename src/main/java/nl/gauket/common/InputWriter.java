@@ -24,8 +24,9 @@ public class InputWriter {
             throw new IllegalStateException("File not created");
         }
     }
+
     public void writeToFile(int year, int day, BufferedReader br) throws IOException {
-        String filename = String.format("src/main/resources/%s/input%s.txt",year, day);
+        String filename = String.format("src/main/resources/%s/input%s.txt", year, day);
         File file = createFile(filename);
         openFileWriter(file);
 

@@ -8,25 +8,30 @@ public class Day3 extends Day {
     private static final int DAY = 2;
 
     public static void main(String[] args) {
+        prepareDaily(args[0], YEAR20, DAY);
         part1();
         part2();
     }
 
     private static void part1() {
-        start(YEAR20, DAY);
+        start();
         // part 1 //
-        var result = "";
+        var result = solve();
 
-        stopTimer();
+        stop();
         printResult(DAY, result);
     }
 
     private static void part2() {
-        start(YEAR20, DAY);
+        start();
         // part 2 //
-        var result = "";
+        var result = solve();
 
-        stopTimer();
+        stop();
         printResult(DAY, result);
+    }
+
+    private static int solve() {
+        return 0;
     }
 }

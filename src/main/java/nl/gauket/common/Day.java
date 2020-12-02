@@ -6,17 +6,15 @@ public class Day {
 
     private static long start;
 
-    public static void start(int year, int day) {
-        new adventOfCodeService().prepareDailyInput(year, day);
-
-        startTimer();
+    public static void prepareDaily(String session, int year, int day) {
+        new adventOfCodeService(session).prepareDailyInput(year, day);
     }
 
-    public static void startTimer() {
+    public static void start() {
         start = System.currentTimeMillis();
     }
 
-    public static void stopTimer() {
+    public static void stop() {
         System.out.println("Took " + (System.currentTimeMillis() - start) + "ms");
         start = 0L;
     }

@@ -11,7 +11,7 @@ public class Day2Test {
 
     @Test
     void part1() {
-        List<String> input = List.of("1-3 a: abcde","1-3 b: cdefg","2-9 c: ccccccccc");
+        List<String> input = List.of("1-3 a: abcde", "1-3 b: cdefg", "2-9 c: ccccccccc");
         int expected = 2;
 
         var result = Day2.solve(input, 1);
@@ -20,7 +20,7 @@ public class Day2Test {
 
     @Test
     void part2() {
-        List<String> input = List.of("1-3 a: abcde","1-3 b: cdefg","2-9 c: ccccccccc");
+        List<String> input = List.of("1-3 a: abcde", "1-3 b: cdefg", "2-9 c: ccccccccc");
         int expected = 1;
 
         var result = Day2.solve(input, 2);

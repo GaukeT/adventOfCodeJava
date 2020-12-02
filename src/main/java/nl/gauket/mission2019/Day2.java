@@ -19,17 +19,17 @@ public class Day2 extends Day {
     }
 
     private static void part1() throws IOException, URISyntaxException {
-        start(YEAR19, DAY);
+        start();
         // part 1 // 4945026
         int[] input = readInputAsIntArray(YEAR19, DAY);
         input = runIntcodeProgram(input, 12, 2);
 
         printResult(DAY, input[0]);
-        stopTimer();
+        stop();
     }
 
     private static void part2() throws IOException, URISyntaxException {
-        start(YEAR19, DAY);
+        start();
         // part 2 // 19690720
 
         // constraint solver (z3)
@@ -47,7 +47,7 @@ public class Day2 extends Day {
         int n = val % c2;
 
         printResult(DAY, 100 * v + n);
-        stopTimer();
+        stop();
     }
 
     public static int[] runIntcodeProgram(int[] input, int noun, int verb) {
@@ -58,7 +58,7 @@ public class Day2 extends Day {
 
     public static int[] runIntcodeProgram(int[] input) {
         int instructionPointer = 0;
-        while(true) {
+        while (true) {
             int opCode = input[instructionPointer];
             if (opCode == 99) break; // halt program
 
