@@ -74,7 +74,7 @@ public class Day2 extends Day {
             var first = String.valueOf(pw.charAt(min-1));
             var second = String.valueOf(pw.charAt(max-1));
 
-            return (!letter.equals(first) && letter.equals(second)) || (letter.equals(first) && !letter.equals(second));
+            return letter.equals(first) ^ letter.equals(second);
         }
     }
 
