@@ -7,7 +7,7 @@ public class Day {
     private static long start;
 
     public static void prepareDaily(String session, int year, int day) {
-        new adventOfCodeService(session).prepareDailyInput(year, day);
+        new InputService(session).prepareDailyInput(year, day);
     }
 
     public static void start() {

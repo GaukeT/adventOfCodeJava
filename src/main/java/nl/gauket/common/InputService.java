@@ -1,23 +1,23 @@
 package nl.gauket.common;
 
-import java.io.BufferedReader;
 import java.io.IOException;
-import java.io.InputStreamReader;
+import java.io.InputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
-public class adventOfCodeService {
-    private static final String url = "https://adventofcode.com/%s/day/%s/input";
-    private String session = "";
-    InputWriter inputWriter;
+import static nl.gauket.common.InputWriter.checkIfInputExists;
+import static nl.gauket.common.InputWriter.writeToFile;
 
-    public adventOfCodeService(String session) {
+public class InputService {
+    private static final String url = "https://adventofcode.com/%s/day/%s/input";
+    private final String session;
+
+    public InputService(String session) {
         this.session = session;
-        this.inputWriter = new InputWriter();
     }
 
     public void prepareDailyInput(int year, int day) {
-        if (!inputWriter.checkIfInputExists(year, day)) {
+        if (!checkIfInputExists(year, day)) {
             // get input from AOC
             if (!downloadInputFromServer(year, day))
                 throw new RuntimeException("Something went wrong downloading input from AOC server");
@@ -34,17 +34,16 @@ public class adventOfCodeService {
         try {
             URL url = new URL(urlAoc);
             con = (HttpURLConnection) url.openConnection();
-
             con.setRequestMethod("GET");
             con.setRequestProperty("Cookie", "session=" + session);
 
             int status = con.getResponseCode();
 
             if (status == 200) {
-                inputWriter.writeToFile(year, day,
-                        new BufferedReader(new InputStreamReader(con.getInputStream())));
+                InputStream in = con.getInputStream();
+                writeToFile(year, day, in);
             } else {
-                throw new IOException("Something went wrong downloading input from AOC server");
+                throw new IOException("Something went wrong downloading input from AOC server | response code: " + status);
             }
             return true;
         } catch (IOException e) {

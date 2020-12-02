@@ -5,7 +5,7 @@ import nl.gauket.common.Day;
 import static nl.gauket.common.ResultLogger.printResult;
 
 public class Day3 extends Day {
-    private static final int DAY = 2;
+    private static final int DAY = 3;
 
     public static void main(String[] args) {
         prepareDaily(args[0], YEAR20, DAY);
