@@ -10,11 +10,7 @@ import static nl.gauket.common.InputWriter.writeToFile;
 
 public class InputService extends Timer {
     private static final String url = "https://adventofcode.com/%s/day/%s/input";
-    private final String session;
-
-    public InputService(String session) {
-        this.session = session;
-    }
+    private final String session = System.getProperty("session");
 
     public void prepareDailyInput(int year, int day) {
         if (!checkIfInputExists(year, day)) {

@@ -15,7 +15,7 @@ public class Day3 extends Day {
     private static final int DAY = 3;
 
     public static void main(String[] args) throws IOException, URISyntaxException {
-        prepareDaily(args[0], YEAR19, DAY);
+        prepareDaily(YEAR19, DAY);
         part1();
     }
 

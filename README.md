@@ -6,3 +6,4 @@ This project contains my implementations of the [advent of code](https://advento
 
 ### Configuration
 - Java 14
+- Use `-Dsession=**************` as VM options

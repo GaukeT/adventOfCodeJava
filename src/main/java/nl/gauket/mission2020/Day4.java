@@ -8,7 +8,7 @@ public class Day4 extends Day {
     private static final int DAY = 4;
 
     public static void main(String[] args) {
-        prepareDaily(args[0], YEAR20, DAY);
+        prepareDaily(YEAR20, DAY);
         part1();
         part2();
     }
