@@ -58,7 +58,7 @@ public class Day3 extends Day {
         var fieldWith = 31;
 
         while (down < input.length) {
-            if (right >= fieldWith) right -= fieldWith;
+            right = right % fieldWith;
 
             var tree = input[down][right];
             if (isTree(tree)) treeCounter++;
