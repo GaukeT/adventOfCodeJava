@@ -22,24 +22,22 @@ public class Day1 extends Day {
 
     private static void part1() throws IOException, URISyntaxException {
         start();
-        // part 1 // 787776
+        // part 1 //
         var input = InputReader.readInputAsIntStream(YEAR20, DAY).toArray();
         var result = solve(input, 2);
 
         stop();
-        printResult(DAY, result);
-        AssertEq(787776, result);
+        printResult(DAY, 787776, result);
     }
 
     private static void part2() throws IOException, URISyntaxException {
         start();
-        // part 1 // 262738554
+        // part 1 //
         var input = InputReader.readInputAsIntStream(YEAR20, DAY).toArray();
         var result = solve(input, 3);
 
         stop();
-        printResult(DAY, result);
-        AssertEq(262738554, result);
+        printResult(DAY, 262738554, result);
     }
 
     public static int solve(int[] input, int nrOfItems) {

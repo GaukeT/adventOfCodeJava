@@ -26,24 +26,22 @@ public class Day2 extends Day {
 
     private static void part1() throws IOException, URISyntaxException {
         start();
-        // part 1 // 396
+        // part 1 //
         var input = InputReader.readInputAsStringList(YEAR20, DAY);
         var result = solve(input, 1);
 
         stop();
-        printResult(DAY, result);
-        AssertEq(396, result);
+        printResult(DAY, 396, result);
     }
 
     private static void part2() throws IOException, URISyntaxException {
         start();
-        // part 2 // 428
+        // part 2 //
         var input = InputReader.readInputAsStringList(YEAR20, DAY);
         var result = solve(input, 2);
 
         stop();
-        printResult(DAY, result);
-        AssertEq(428, result);
+        printResult(DAY, 428, result);
     }
 
     public static int solve(List<String> input, int part) {

@@ -25,8 +25,7 @@ public class Day3 extends Day {
         var result = solve(input, 3, 1);
 
         stop();
-        printResult(DAY, result);
-        AssertEq(237, result);
+        printResult(DAY, 237, result);
     }
 
     private static void part2() throws IOException, URISyntaxException {
@@ -36,8 +35,7 @@ public class Day3 extends Day {
         var result = solve2(input);
 
         stop();
-        printResult(DAY, result);
-        AssertEq(2106818610, result);
+        printResult(DAY, 2106818610, result);
     }
 
     private static int solve2(char[][] input) {

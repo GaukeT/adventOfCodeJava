@@ -17,7 +17,7 @@ public class Day1 extends Day {
                 .reduce(0, (t, m) -> t + calculateFuelBy(m));
 
         stop();
-        printResult(DAY, result);
+        printResult(DAY, 3318604, result);
     }
 
     public static int calculateFuelBy(int mass) {

@@ -20,7 +20,7 @@ public class Day4 extends Day {
         var result = solve();
 
         stop();
-        printResult(DAY, result);
+        printResult(DAY, 0, result);
     }
 
     private static void part2() {
@@ -30,7 +30,7 @@ public class Day4 extends Day {
         var result = solve();
 
         stop();
-        printResult(DAY, result);
+        printResult(DAY, 0, result);
     }
 
     private static int solve() {
