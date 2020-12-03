@@ -32,6 +32,7 @@ public class Day2 extends Day {
 
         stop();
         printResult(DAY, result);
+        AssertEq(396, result);
     }
 
     private static void part2() throws IOException, URISyntaxException {
@@ -42,6 +43,7 @@ public class Day2 extends Day {
 
         stop();
         printResult(DAY, result);
+        AssertEq(428, result);
     }
 
     public static int solve(List<String> input, int part) {

@@ -29,6 +29,25 @@ public class InputReader {
                 Paths.get(ClassLoader.getSystemResource(getFilename(year, day)).toURI()));
     }
 
+    public static String[] readInputAsStringArray(int year, int day) throws URISyntaxException, IOException {
+        return readInputAsStringList(year, day).toArray(new String[]{});
+    }
+
+    public static char[][] readInputAsCharTwoDemencialArray(int year, int day) throws URISyntaxException, IOException {
+        var input = readInputAsStringArray(year, day);
+
+        var length = input.length;
+        var rowLength = input[0].length();
+        var retval = new char[length][rowLength];
+
+        var i = 0;
+        for (String row : input) {
+            retval[i] = row.toCharArray();
+            i++;
+        }
+        return retval;
+    }
+
     private String[] convert(String values) {
         return values.split(",");
     }

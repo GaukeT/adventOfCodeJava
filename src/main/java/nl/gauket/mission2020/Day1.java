@@ -28,6 +28,7 @@ public class Day1 extends Day {
 
         stop();
         printResult(DAY, result);
+        AssertEq(787776, result);
     }
 
     private static void part2() throws IOException, URISyntaxException {
@@ -38,6 +39,7 @@ public class Day1 extends Day {
 
         stop();
         printResult(DAY, result);
+        AssertEq(262738554, result);
     }
 
     public static int solve(int[] input, int nrOfItems) {
