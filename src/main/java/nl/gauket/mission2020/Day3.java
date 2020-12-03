@@ -5,7 +5,6 @@ import nl.gauket.common.InputReader;
 
 import java.io.IOException;
 import java.net.URISyntaxException;
-import java.util.List;
 
 import static nl.gauket.common.Calculator.multiply;
 import static nl.gauket.common.ResultLogger.printResult;
