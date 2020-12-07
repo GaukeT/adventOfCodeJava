@@ -7,7 +7,12 @@ import java.io.IOException;
 import java.net.URISyntaxException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
+import static java.lang.Integer.parseInt;
+import static java.lang.String.format;
+import static java.util.regex.Pattern.compile;
 import static nl.gauket.common.ResultLogger.printResult;
 
 public class Day4 extends Day {
@@ -24,23 +29,23 @@ public class Day4 extends Day {
         // part 1 //
         var input = InputReader.readInputAsStringList(YEAR20, DAY);
         input.add(""); // hack to validate last passport also
-        var result = solve(input);
+        var result = solve(input, 1);
 
         stop();
         printResult(DAY, 242, result);
     }
 
-    private static void part2() {
+    private static void part2() throws IOException, URISyntaxException {
         start();
         // part 2 //
-        var input = new ArrayList<String>();
-        var result = solve(input);
+        var input = InputReader.readInputAsStringList(YEAR20, DAY);
+        var result = solve(input , 2);
 
         stop();
-        printResult(DAY, 0, result);
+        printResult(DAY, 186, result);
     }
 
-    public static int solve(List<String> input) {
+    public static int solve(List<String> input, int part) {
         var validCounter = 0;
         var ppBuilder = new StringBuilder();
 
@@ -50,7 +55,7 @@ public class Day4 extends Day {
                 ppBuilder.append(row)
                          .append(" ");
             } else {
-                var isValid = validatePassport(ppBuilder.toString());
+                var isValid = validatePassport(ppBuilder.toString(), part);
 
                 if (isValid) validCounter++;
                 ppBuilder = new StringBuilder();
@@ -59,24 +64,89 @@ public class Day4 extends Day {
         return validCounter;
     }
 
-    private static boolean validatePassport(String pass) {
-
+    private static boolean validatePassport(String pass, int part) {
         // required fields
-        if (pass.contains("byr:") && // (Birth Year)
-            pass.contains("iyr:") && // (Issue Year)
-            pass.contains("eyr:") && // (Expiration Year)
-            pass.contains("hgt:") && // (Height)
-            pass.contains("hcl:") && // (Hair Color)
-            pass.contains("ecl:") && // (Eye Color)
-            pass.contains("pid:")) { // (Passport ID)
-
-            return true;
-        }
+        return (validateBirthYear(pass, part) &&
+                validateIssueYear(pass, part) &&
+                validateExpirationYear(pass, part) &&
+                validateHeight(pass, part) &&
+                validateHairColor(pass, part) &&
+                validateEyeColor(pass, part) &&
+                validatePassportId(pass, part));
 
         // optional field
         // pass.contains("cid");  // (Country ID)
+    }
+
+    private static boolean validatePassportId(String pass, int part) {
+        if (pass.contains("pid:")) {
+            if (part == 1) return true;
+            return validateRegex("pid:[0-9]{9}", pass);
+        }
         return false;
     }
 
+    private static boolean validateEyeColor(String pass, int part) {
+        if (pass.contains("ecl:")) {
+            if (part == 1) return true;
+            return validateRegex("ecl:(amb|blu|brn|gry|grn|hzl|oth)", pass);
+        }
+        return false;
+    }
 
+    private static boolean validateHairColor(String pass, int part) {
+        if (pass.contains("hcl:")) {
+            if (part == 1) return true;
+            return validateRegex("hcl:#[0-9|a-f]{6}", pass);
+        }
+        return false;
+    }
+
+    private static boolean validateHeight(String pass, int part) {
+        if (pass.contains("hgt:")) {
+            if (part == 1) return true;
+            return validateRegex("hgt:((1[5-8]\\d|19[0-3])cm|(59|6\\d|7[0-6])in)", pass);
+        }
+        return false;
+    }
+
+    private static boolean validateExpirationYear(String pass, int part) {
+        if (pass.contains("eyr:")) {
+            if (part == 1) return true;
+            return validateFourDigitsBetween(2020, 2030, pass, "eyr");
+        }
+        return false;
+    }
+
+    private static boolean validateIssueYear(String pass, int part) {
+        if (pass.contains("iyr:")) {
+            if (part == 1) return true;
+            return validateFourDigitsBetween(2010, 2020, pass, "iyr");
+        }
+        return false;
+    }
+
+    private static boolean validateBirthYear(String pass, int part) {
+        if (pass.contains("byr:")) {
+            if (part == 1) return true;
+            return validateFourDigitsBetween(1920, 2002, pass, "byr");
+        }
+        return false;
+    }
+
+    private static boolean validateRegex(String regex, String pass) {
+        Pattern pattern = compile(regex);
+        Matcher matcher = pattern.matcher(pass);
+        return matcher.find();
+    }
+
+    private static boolean validateFourDigitsBetween(int atLeast, int atMost, String pass, String part) {
+        Pattern pattern = compile(format("%s:(\\d{4})", part));
+        Matcher matcher = pattern.matcher(pass);
+        if (matcher.find()) {
+            var value = parseInt(matcher.group(1));
+            return value >= atLeast && value <= atMost;
+        }
+        return false;
+    }
 }

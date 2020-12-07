@@ -29,7 +29,7 @@ public class Day4Test {
         };
         int expected = 2;
 
-        var result = Day4.solve(Arrays.asList(input));
+        var result = Day4.solve(Arrays.asList(input), 1);
         assertEquals(expected, result);
     }
 
