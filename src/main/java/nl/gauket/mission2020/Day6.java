@@ -1,7 +1,11 @@
+package nl.gauket.mission2020;
+
+import nl.gauket.common.Day;
+
 import static nl.gauket.common.ResultLogger.printResult;
 
-public class Day1 extends Day {
-    private static final int DAY = 1;
+public class Day6 extends Day {
+    private static final int DAY = 6;
 
     public static void main(String[] args) {
         prepareDaily(YEAR20, DAY);
