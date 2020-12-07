@@ -6,6 +6,7 @@ public class Asserter {
     }
 
     public static void AssertEq(String expected, String actual) {
-        if (!expected.equals(actual)) throw new IllegalArgumentException("Expected: " + expected + " differs from actual:" + actual);
+        if (!expected.equals(actual))
+            throw new IllegalArgumentException("Expected: " + expected + " differs from actual:" + actual);
     }
 }

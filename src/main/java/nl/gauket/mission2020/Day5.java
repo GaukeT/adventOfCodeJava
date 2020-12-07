@@ -6,10 +6,10 @@ import nl.gauket.common.InputReader;
 import java.io.IOException;
 import java.net.URISyntaxException;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collections;
 
-import static java.lang.Math.*;
+import static java.lang.Math.ceil;
+import static java.lang.Math.floor;
 import static nl.gauket.common.ResultLogger.printResult;
 
 public class Day5 extends Day {
@@ -34,7 +34,7 @@ public class Day5 extends Day {
     private static void part2() throws IOException, URISyntaxException {
         start();
         // part 2 //
-        var input = InputReader.readInputAsStringArray(YEAR20, DAY);;
+        var input = InputReader.readInputAsStringArray(YEAR20, DAY);
         var result = solve(input, 2);
 
         stop();
@@ -47,7 +47,7 @@ public class Day5 extends Day {
 
         if (part == 1) {
             // part 1
-            return seats.get(seats.size()-1);
+            return seats.get(seats.size() - 1);
         } else {
             // part 2
             var mySeat = 0;
@@ -78,9 +78,9 @@ public class Day5 extends Day {
                 var l = partition[i];
 
                 if ("F".equals(l)) {
-                    upperRow -= (int) ceil((upperRow - lowerRow) / 2)+1;
+                    upperRow -= (int) ceil((upperRow - lowerRow) / 2) + 1;
                 } else if ("B".equals(l)) {
-                    lowerRow += (int) floor((upperRow - lowerRow) / 2)+1;
+                    lowerRow += (int) floor((upperRow - lowerRow) / 2) + 1;
                 }
             }
 
@@ -95,9 +95,9 @@ public class Day5 extends Day {
                 String l = partition[i];
 
                 if ("L".equals(l)) {
-                    upperSeat -= (int) ceil((upperSeat - lowerSeat) / 2)+1;
+                    upperSeat -= (int) ceil((upperSeat - lowerSeat) / 2) + 1;
                 } else if ("R".equals(l)) {
-                    lowerSeat += (int) floor((upperSeat - lowerSeat) / 2)+1;
+                    lowerSeat += (int) floor((upperSeat - lowerSeat) / 2) + 1;
                 }
             }
 
