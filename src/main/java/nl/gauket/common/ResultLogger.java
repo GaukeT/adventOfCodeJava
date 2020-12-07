@@ -3,11 +3,15 @@ package nl.gauket.common;
 public class ResultLogger extends Asserter {
 
     public static void printResult(int day, int result) {
-        printResult(day, String.valueOf(result));
+        printResult(day, 0, result, false);
     }
 
     public static void printResult(int day, int expected, int result) {
-        AssertEq(expected, result);
+        printResult(day, expected, result, true);
+    }
+
+    public static void printResult(int day, int expected, int result, boolean checkResult) {
+        if (checkResult) AssertEq(expected, result);
         printResult(day, String.valueOf(result));
     }
 

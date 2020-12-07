@@ -1,5 +1,7 @@
 package nl.gauket.common;
 
+import java.io.BufferedWriter;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStream;
 import java.nio.file.Files;
@@ -15,5 +17,16 @@ public class InputWriter {
     public static boolean checkIfInputExists(int year, int day) {
         String filename = String.format("%s/input%s.txt", year, day);
         return ClassLoader.getSystemResource(filename) != null;
+    }
+
+    public static void debug(String str) {
+        try {
+            BufferedWriter writer = new BufferedWriter(new FileWriter("debug.txt", true));
+            writer.append(str);
+            writer.append('\n');
+            writer.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }
