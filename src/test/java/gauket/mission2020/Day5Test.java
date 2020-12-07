@@ -1,0 +1,21 @@
+package gauket.mission2020;
+
+import nl.gauket.mission2020.Day5;
+import org.junit.jupiter.api.Test;
+
+import static org.junit.jupiter.api.Assertions.*;
+
+class Day5Test {
+    @Test
+    void part1() {
+        String[] input = {"FBFBBFFRLR", "BFFFBBFRRR", "FFFBBBFRRR", "BBFFBBFRLL"};
+        int expected = 820;
+
+        int result = Day5.solve(input, 1);
+        assertEquals(expected, result);
+    }
+
+    @Test
+    void part2() {
+    }
+}

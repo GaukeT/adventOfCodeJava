@@ -13,7 +13,7 @@ public class Day1 extends Day {
         start();
         // part 1 //
         var input = "";
-        var result = solve();
+        var result = solve(input, 1);
 
         stop();
         printResult(DAY, 0, result);
@@ -23,13 +23,13 @@ public class Day1 extends Day {
         start();
         // part 2 //
         var input = "";
-        var result = solve();
+        var result = solve(input, 2);
 
         stop();
         printResult(DAY, 0, result);
     }
 
-    public static int solve() {
+    public static int solve(String input, part) {
         return 0;
     }
 }
