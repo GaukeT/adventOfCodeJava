@@ -1,6 +1,5 @@
-package gauket.mission2020;
+package nl.gauket.mission2020;
 
-import nl.gauket.mission2020.Day4;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;

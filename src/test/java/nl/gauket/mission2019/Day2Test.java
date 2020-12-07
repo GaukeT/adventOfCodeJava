@@ -1,6 +1,5 @@
-package gauket.mission2019;
+package nl.gauket.mission2019;
 
-import nl.gauket.mission2019.Day2;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 

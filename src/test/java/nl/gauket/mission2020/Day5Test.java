@@ -1,6 +1,5 @@
-package gauket.mission2020;
+package nl.gauket.mission2020;
 
-import nl.gauket.mission2020.Day5;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
