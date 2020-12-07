@@ -33,7 +33,22 @@ public class InputReader {
         return readInputAsStringList(year, day).toArray(new String[]{});
     }
 
-    public static char[][] readInputAsCharTwoDemencialArray(int year, int day) throws URISyntaxException, IOException {
+    public static String[][] readInputAsStringMatrix(int year, int day) throws URISyntaxException, IOException {
+        var input = readInputAsStringArray(year, day);
+
+        var length = input.length;
+        var rowLength = input[0].length();
+        var retval = new String[length][rowLength];
+
+        var i = 0;
+        for (String row : input) {
+            retval[i] = convert(row);
+            i++;
+        }
+        return retval;
+    }
+
+    public static char[][] readInputAsCharMatrix(int year, int day) throws URISyntaxException, IOException {
         var input = readInputAsStringArray(year, day);
 
         var length = input.length;
@@ -48,7 +63,7 @@ public class InputReader {
         return retval;
     }
 
-    private String[] convert(String values) {
+    private static String[] convert(String values) {
         return values.split(",");
     }
 

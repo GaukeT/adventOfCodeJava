@@ -21,7 +21,7 @@ public class Day3 extends Day {
     private static void part1() throws IOException, URISyntaxException {
         start();
         // part 1 //
-        var input = InputReader.readInputAsCharTwoDemencialArray(YEAR20, DAY);
+        var input = InputReader.readInputAsCharMatrix(YEAR20, DAY);
         var result = solve(input, 3, 1);
 
         stop();
@@ -31,7 +31,7 @@ public class Day3 extends Day {
     private static void part2() throws IOException, URISyntaxException {
         start();
         // part 2 //
-        var input = InputReader.readInputAsCharTwoDemencialArray(YEAR20, DAY);
+        var input = InputReader.readInputAsCharMatrix(YEAR20, DAY);
         var result = solve2(input);
 
         stop();
