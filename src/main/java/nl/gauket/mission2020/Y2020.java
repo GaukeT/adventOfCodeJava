@@ -12,5 +12,6 @@ public class Y2020 {
         Day5.main(args);
         Day6.main(args);
         Day7.main(args);
+        Day8.main(args);
     }
 }
