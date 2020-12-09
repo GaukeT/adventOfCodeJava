@@ -11,16 +11,20 @@ public class ResultLogger extends Asserter {
     }
 
     public static void printResult(int day, int expected, int result, boolean checkResult) {
-        if (checkResult) AssertEq(expected, result);
+        if (checkResult && 0 != expected) AssertEq(expected, result);
         printResult(day, String.valueOf(result));
     }
 
     public static void printResult(int day, String result) {
-        System.out.println("Result of Day " + day + ": " + result);
+        printResult(day, "", result, false);
     }
 
     public static void printResult(int day, String expected, String result) {
-        AssertEq(expected, result);
+        printResult(day, expected, result, true);
+    }
+
+    public static void printResult(int day, String expected, String result, boolean checkResult) {
+        if (checkResult && !"".equals(expected)) AssertEq(expected, result);
         System.out.println("Result of Day " + day + ": " + result);
     }
 }

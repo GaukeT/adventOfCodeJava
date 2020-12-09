@@ -24,6 +24,14 @@ public class InputReader {
                 .toArray();
     }
 
+    public static long[] readInputAsLongArray(int year, int day, String splitBy) throws URISyntaxException, IOException {
+        return Arrays.stream(Files.readString(
+                Paths.get(ClassLoader.getSystemResource(getFilename(year, day)).toURI()))
+                .split(splitBy))
+                .mapToLong(Long::parseLong)
+                .toArray();
+    }
+
     public static List<String> readInputAsStringList(int year, int day) throws URISyntaxException, IOException {
         return Files.readAllLines(
                 Paths.get(ClassLoader.getSystemResource(getFilename(year, day)).toURI()));
