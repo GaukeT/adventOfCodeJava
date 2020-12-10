@@ -93,15 +93,15 @@ public class Day4 extends Day {
     }
 
     private static boolean validateEyeColor(String pass, int part) {
-        return validateRegex("ecl:(amb|blu|brn|gry|grn|hzl|oth)", pass);
+        return validateRegex("ecl:(amb|blu|brn|gry|grn|hzl|oth) ", pass);
     }
 
     private static boolean validateHairColor(String pass, int part) {
-        return validateRegex("hcl:#[0-9|a-f]{6}", pass);
+        return validateRegex("hcl:#[0-9|a-f]{6} ", pass);
     }
 
     private static boolean validateHeight(String pass, int part) {
-        return validateRegex("hgt:((1[5-8]\\d|19[0-3])cm|(59|6\\d|7[0-6])in)", pass);
+        return validateRegex("hgt:((1[5-8]\\d|19[0-3])cm|(59|6\\d|7[0-6])in) ", pass);
     }
 
     private static boolean validateExpirationYear(String pass, int part) {
@@ -123,7 +123,7 @@ public class Day4 extends Day {
     }
 
     private static boolean validateFourDigitsBetween(int atLeast, int atMost, String pass, String part) {
-        Pattern pattern = compile(format("%s:(\\d{4})", part));
+        Pattern pattern = compile(format("%s:(\\d{4}) ", part));
         Matcher matcher = pattern.matcher(pass);
         if (matcher.find()) {
             var value = parseInt(matcher.group(1));
