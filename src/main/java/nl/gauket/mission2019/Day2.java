@@ -21,7 +21,7 @@ public class Day2 extends Day {
     private static void part1() throws IOException, URISyntaxException {
         start();
         // part 1 //
-        int[] input = readInputAsIntArray(YEAR19, DAY);
+        int[] input = readInputAsIntArray(YEAR19, DAY, ",");
         var result = runIntcodeProgram(input, 12, 2)[0];
 
         printResult(DAY, 4945026, result);
@@ -33,8 +33,8 @@ public class Day2 extends Day {
         // part 2 //
 
         // constraint solver (z3)
-        int[] input1 = readInputAsIntArray(YEAR19, DAY);
-        int[] input2 = readInputAsIntArray(YEAR19, DAY);
+        int[] input1 = readInputAsIntArray(YEAR19, DAY, ",");
+        int[] input2 = readInputAsIntArray(YEAR19, DAY, ",");
 
         int r1 = runIntcodeProgram(input1, 12, 2)[0];
         int r2 = runIntcodeProgram(input2, 13, 2)[0];

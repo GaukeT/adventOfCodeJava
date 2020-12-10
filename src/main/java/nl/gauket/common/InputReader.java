@@ -16,10 +16,10 @@ public class InputReader {
                 .flatMapToInt(num -> IntStream.of(Integer.parseInt(num)));
     }
 
-    public static int[] readInputAsIntArray(int year, int day) throws URISyntaxException, IOException {
+    public static int[] readInputAsIntArray(int year, int day, String splitBy) throws URISyntaxException, IOException {
         return Arrays.stream(Files.readString(
                 Paths.get(ClassLoader.getSystemResource(getFilename(year, day)).toURI()))
-                .split(","))
+                .split(splitBy))
                 .mapToInt(Integer::parseInt)
                 .toArray();
     }
