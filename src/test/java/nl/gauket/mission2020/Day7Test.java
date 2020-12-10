@@ -41,4 +41,19 @@ class Day7Test {
         assertEquals(expected, result);
     }
 
+    @Test
+    void part2b() {
+        var input = new String[]{
+                "shiny gold bags contain 1 dark olive bag, 2 vibrant plum bags.",       // 1x3
+                "dark olive bags contain 3 faded blue bags, 4 dotted black bags.",      // 1x7
+                "vibrant plum bags contain 5 faded blue bags, 6 dotted black bags.",    // 2x5 + 2x6
+                "faded blue bags contain no other bags.",                               //
+                "dotted black bags contain no other bags."                              //
+        };
+        int expected = 32;
+
+        int result = Day7.solve(input, 2);
+        assertEquals(expected, result);
+    }
+
 }

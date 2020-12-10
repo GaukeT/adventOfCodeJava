@@ -52,6 +52,11 @@ public class Day7 extends Day {
         determineBagContents(input, part);
         findRecursive(bags.get("shiny gold"));
 
+
+        if (part == 2) {
+            var c = content.stream().reduce(Integer::sum);
+            return c.orElse(0);
+        }
         return bagSet.size();
     }
 
@@ -72,6 +77,10 @@ public class Day7 extends Day {
                 }
             }
         }
+    }
+
+    private static void calculateBagsNeeded(Bag bag) {
+
     }
 
     private static void determineBagContents(String[] input, int part) {
