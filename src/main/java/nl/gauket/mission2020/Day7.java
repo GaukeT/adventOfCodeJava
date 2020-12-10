@@ -6,8 +6,6 @@ import nl.gauket.common.InputReader;
 import java.io.IOException;
 import java.net.URISyntaxException;
 import java.util.*;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 import static java.lang.Integer.parseInt;
 import static java.util.regex.Pattern.compile;
@@ -18,6 +16,9 @@ public class Day7 extends Day {
 
     private static HashMap<String, List<Bag>> bags = new HashMap<>();
     private static Set<String> bagSet = new HashSet<>();
+
+    private static List<Integer> content = new ArrayList<>();
+    private static int bagsNeeded = 0;
 
     public static void main(String[] args) throws IOException, URISyntaxException {
         prepareDaily(YEAR20, DAY);
@@ -43,12 +44,12 @@ public class Day7 extends Day {
 
         stop();
         printResult(DAY, 0, result, false);
+        // 572 to low
+        // 696155468 to high
     }
 
     public static int solve(String[] input, int part) {
-        if (part == 2) return 0;
-
-        determineBagContents(input);
+        determineBagContents(input, part);
         findRecursive(bags.get("shiny gold"));
 
         return bagSet.size();
@@ -59,18 +60,29 @@ public class Day7 extends Day {
             for (var bag : bagList) {
                 if (!bagSet.contains(bag.label)) {
                     bagSet.add(bag.label);
+
+                    if (bagsNeeded == 0) {
+                        bagsNeeded += bag.amount;
+                    } else {
+                        bagsNeeded = (bagsNeeded * bag.amount);
+                    }
+
+                    content.add(bagsNeeded);
                     findRecursive(bags.get(bag.label));
                 }
             }
         }
     }
 
-    private static void determineBagContents(String[] input) {
+    private static void determineBagContents(String[] input, int part) {
         for (String row : input) {
             var bag = getStringValue("^(\\w+ \\w+)", row);
             var keys = getKeyPair(" ([0-9]) (\\w+ \\w+)", row);
 
-            keys.forEach((k, v) -> putBagInBags(bag, k, v));
+            if (part == 1)
+                keys.forEach((k, v) -> putBagInBags(bag, k, v));
+            if (part == 2)
+                keys.forEach((k, v) -> putBagInBags2(bag, k, v));
         }
     }
 
@@ -88,6 +100,20 @@ public class Day7 extends Day {
         }
     }
 
+    private static void putBagInBags2(String bag, String key, Integer value) {
+        if (key == null) return;
+
+        var b = new Bag(key, value);
+
+        if (bags.containsKey(bag)) {
+            bags.get(bag).add(b);
+        } else {
+            var l = new ArrayList<Bag>();
+            l.add(b);
+            bags.put(bag, l);
+        }
+    }
+
     private static String getStringValue(String regex, String bagInput) {
         var pattern = compile(regex);
         var matcher = pattern.matcher(bagInput);
@@ -102,7 +128,7 @@ public class Day7 extends Day {
         var matcher = pattern.matcher(bagInput);
         var keys = new HashMap<String, Integer>();
 
-        while(matcher.find()) {
+        while (matcher.find()) {
             var k = matcher.group(2);
             var v = parseInt(matcher.group(1));
             keys.put(k, v);
