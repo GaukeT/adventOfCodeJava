@@ -41,7 +41,7 @@ public class Day4 extends Day {
         var result = solve(input, 2);
 
         stop();
-        printResult(DAY, 186, result, false); // result is 1 higher than expected
+        printResult(DAY, 186, result); // result is 1 higher than expected
     }
 
     public static int solve(List<String> input, int part) {
@@ -54,89 +54,66 @@ public class Day4 extends Day {
             // still belongs to same passport
             if (!"".equals(row)) {
                 ppBuilder.append(row)
-                         .append(" ");
+                        .append(" ");
             } else {
                 var isValid = validatePassport(ppBuilder.toString(), part);
-
                 if (isValid) validCounter++;
-                if (part == 2) debugPass(ppBuilder.toString(), isValid);
-                count++;
 
-                ppBuilder = new StringBuilder();
+                ppBuilder = new StringBuilder(); // reset
             }
         }
-        System.out.println("checked " + count + " passports");
         return validCounter;
     }
 
     private static boolean validatePassport(String pass, int part) {
         // required fields
-        return (validateBirthYear(pass, part) &&
-                validateIssueYear(pass, part) &&
-                validateExpirationYear(pass, part) &&
-                validateHeight(pass, part) &&
-                validateHairColor(pass, part) &&
-                validateEyeColor(pass, part) &&
-                validatePassportId(pass, part));
+        if (pass.contains("byr:") && // (Birth Year)
+                pass.contains("iyr:") && // (Issue Year)
+                pass.contains("eyr:") && // (Expiration Year)
+                pass.contains("hgt:") && // (Height)
+                pass.contains("hcl:") && // (Hair Color)
+                pass.contains("ecl:") && // (Eye Color)
+                pass.contains("pid:")) { // (Passport ID)
 
-        // optional field
-        // pass.contains("cid");  // (Country ID)
+            if (part == 1) return true;
+
+            return (validateBirthYear(pass, part) &&
+                    validateIssueYear(pass, part) &&
+                    validateExpirationYear(pass, part) &&
+                    validateHeight(pass, part) &&
+                    validateHairColor(pass, part) &&
+                    validateEyeColor(pass, part) &&
+                    validatePassportId(pass, part));
+        }
+        return false;
     }
 
     private static boolean validatePassportId(String pass, int part) {
-        if (pass.contains("pid:")) {
-            if (part == 1) return true;
-            return validateRegex("pid:[0-9]{9}", pass);
-        }
-        return false;
+        return validateRegex("pid:[0-9]{9} ", pass);
     }
 
     private static boolean validateEyeColor(String pass, int part) {
-        if (pass.contains("ecl:")) {
-            if (part == 1) return true;
-            return validateRegex("ecl:(amb|blu|brn|gry|grn|hzl|oth)", pass);
-        }
-        return false;
+        return validateRegex("ecl:(amb|blu|brn|gry|grn|hzl|oth)", pass);
     }
 
     private static boolean validateHairColor(String pass, int part) {
-        if (pass.contains("hcl:")) {
-            if (part == 1) return true;
-            return validateRegex("hcl:#[0-9|a-f]{6}", pass);
-        }
-        return false;
+        return validateRegex("hcl:#[0-9|a-f]{6}", pass);
     }
 
     private static boolean validateHeight(String pass, int part) {
-        if (pass.contains("hgt:")) {
-            if (part == 1) return true;
-            return validateRegex("hgt:((1[5-8]\\d|19[0-3])cm|(59|6\\d|7[0-6])in)", pass);
-        }
-        return false;
+        return validateRegex("hgt:((1[5-8]\\d|19[0-3])cm|(59|6\\d|7[0-6])in)", pass);
     }
 
     private static boolean validateExpirationYear(String pass, int part) {
-        if (pass.contains("eyr:")) {
-            if (part == 1) return true;
-            return validateFourDigitsBetween(2020, 2030, pass, "eyr");
-        }
-        return false;
+        return validateFourDigitsBetween(2020, 2030, pass, "eyr");
     }
 
     private static boolean validateIssueYear(String pass, int part) {
-        if (pass.contains("iyr:")) {
-            if (part == 1) return true;
-            return validateFourDigitsBetween(2010, 2020, pass, "iyr");
-        }
-        return false;
+        return validateFourDigitsBetween(2010, 2020, pass, "iyr");
     }
 
     private static boolean validateBirthYear(String pass, int part) {
-        if (pass.contains("byr:")) {
-            if (part == 1) return true;
-            return validateFourDigitsBetween(1920, 2002, pass, "byr");
-        }
-        return false;
+        return validateFourDigitsBetween(1920, 2002, pass, "byr");
     }
 
     private static boolean validateRegex(String regex, String pass) {
@@ -153,41 +130,5 @@ public class Day4 extends Day {
             return value >= atLeast && value <= atMost;
         }
         return false;
-    }
-
-
-    // debug code
-    private static void debugPass(String pass, boolean isValid) {
-        var byr = getValue("byr:(\\d{4})", pass);
-        var iyr = getValue("iyr:(\\d{4})", pass);
-        var eyr = getValue("eyr:(\\d{4})", pass);
-        var hgt = getValue("hgt:((1[5-8][0-9]|19[0-3])cm|(59|6[0-9]|7[0-6])in)", pass);
-        var hcl = getValue("hcl:#[0-9|a-f]{6}", pass);
-        var ecl = getValue("ecl:(amb|blu|brn|gry|grn|hzl|oth)", pass);
-        var pid = getValue("pid:[0-9]{9}", pass);
-        var cid = getValue("cid:[0-9]{0,9}", pass);
-
-//        // --------------------------------------------------------
-//        if (byr.length() != 8) System.out.println("byr ERROR: " + pass);
-//        if (iyr.length() != 8) System.out.println("iyr ERROR: " + pass);
-//        if (eyr.length() != 8) System.out.println("eyr ERROR: " + pass);
-//        // --------------------------------------------------------
-//        if (hgt.length() != 9 && hgt.length() != 8) System.out.println("hgt ERROR: " + pass);
-//        // --------------------------------------------------------
-//        if (hcl.length() != 11) System.out.println("hcl ERROR: " + pass);
-//        if (ecl.length() != 7) System.out.println("ecl ERROR: " + pass);
-//        if (pid.length() != 13) System.out.println("pid ERROR: " + pass);
-//        // --------------------------------------------------------
-
-        InputWriter.debug(format("%s %s %s %s %s %s %s %s Valid:%s", iyr, byr, eyr, cid, hcl, ecl, hgt, pid, isValid));
-    }
-
-    private static String getValue(String regex, String pass) {
-        Pattern pattern = compile(regex);
-        Matcher matcher = pattern.matcher(pass);
-        if (matcher.find()) {
-            return matcher.group(0);
-        }
-        return "null";
     }
 }
