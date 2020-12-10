@@ -65,6 +65,7 @@ public class Day4 extends Day {
                 ppBuilder = new StringBuilder();
             }
         }
+        System.out.println("checked " + count + " passports");
         return validCounter;
     }
 
