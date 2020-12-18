@@ -91,15 +91,13 @@ public class Day12 extends Day {
                 var cx = wx;
                 var cy = wy;
 
-                if (90 == distance) {
+                var t = distance / 90;
+                for (int i = 0; i < t; i++) {
                     wx = -cy;
                     wy = cx;
-                } else if (180 == distance) {
-                    wx = abs(cy);
-                    wy = abs(cx);
-                } else if (270 == distance) {
-                    wx = cy;
-                    wy = -cx;
+
+                    cx = wx;
+                    cy = wy;
                 }
                 continue;
             }
@@ -110,16 +108,12 @@ public class Day12 extends Day {
                 var cy = wy;
 
                 var t = distance / 90;
-
-                if (90 == distance) {
+                for (int i = 0; i < t; i++) {
                     wx = cy;
                     wy = -cx;
-                } else if (180 == distance) {
-                    wx = -cy;
-                    wy = -cx;
-                } else if (270 == distance) {
-                    wx = -cy;
-                    wy = cx;
+
+                    cx = wx;
+                    cy = wy;
                 }
                 continue;
             }
