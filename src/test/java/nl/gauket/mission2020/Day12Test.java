@@ -23,4 +23,13 @@ class Day12Test {
         assertEquals(expected, result);
     }
 
+    @Test
+    void part2a() {
+        var input = new String[]{"F10", "N3", "F7", "R90", "L90", "R180", "L180", "R270", "L270", "R90", "F11"};
+        int expected = 286;
+
+        int result = Day12.solve(input, 2);
+        assertEquals(expected, result);
+    }
+
 }
