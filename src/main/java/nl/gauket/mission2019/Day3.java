@@ -28,7 +28,7 @@ public class Day3 extends Day {
         var input = InputReader.readInputAsStringMatrix(YEAR19, DAY);
         var result = solve(input);
 
-        printResult(DAY, result);
+        printResult(DAY,0, result);
         stop();
     }
 

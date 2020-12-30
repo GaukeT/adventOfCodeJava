@@ -43,7 +43,7 @@ public class Day7 extends Day {
         var result = solve(input, 2);
 
         stop();
-        printResult(DAY, 0, result, false);
+        printResult(DAY, 0, result);
         // 572 to low
         // 696155468 to high
     }

@@ -26,34 +26,56 @@ public class Day1 extends Day {
         part1b(input.clone());
         part1c(input.clone());
         part2(input.clone());
+        part2b(input.clone());
     }
 
     private static void part1(int[] input) {
         start();
         var result = solve(input, 2);
-        printResult(DAY, 787776, result);
+        printResult(DAY, 787776, result, "a");
         stop();
     }
 
     private static void part1b(int[] input) {
         start();
         var result = solveB(input);
-        printResult(DAY, 787776, result);
+        printResult(DAY, 787776, result, "b");
         stop();
     }
 
     private static void part1c(int[] input) {
         start();
         var result = solveC(input); // recursive solution
-        printResult(DAY, 787776, result);
+        printResult(DAY, 787776, result, "c");
         stop();
     }
 
     private static void part2(int[] input) {
         start();
         var result = solve(input, 3);
-        printResult(DAY, 262738554, result);
+        printResult(DAY, 262738554, result, "a");
         stop();
+    }
+
+    private static void part2b(int[] input) {
+        start();
+        var result = solve2B(input);
+        printResult(DAY, 262738554, result, "b");
+        stop();
+    }
+
+    private static int solve2B(int[] input) {
+        var index = 2;
+
+        while (index < input.length) {
+            var target = 2020 - input[index];
+            var result = recSolveC(input, target, 0, input.length - 1);
+
+            if (result != -1) return result * input[index];
+            index++;
+        }
+
+        return -1;
     }
 
     private static int solveC(int[] input) {

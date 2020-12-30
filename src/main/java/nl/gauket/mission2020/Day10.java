@@ -36,7 +36,7 @@ public class Day10 extends Day {
         var result = solve(input, 2);
 
         stop();
-        printResult(DAY, 0, result, false);
+        printResult(DAY, 0, result);
     }
 
     public static int solve(int[] input, int part) {

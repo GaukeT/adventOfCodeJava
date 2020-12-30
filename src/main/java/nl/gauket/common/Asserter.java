@@ -13,6 +13,6 @@ public class Asserter {
 
     public static void AssertEq(String expected, String actual) {
         if (!expected.equals(actual))
-            throw new IllegalArgumentException(format("Expected: %s differs from actual: %s", expected, actual));
+            System.out.println((format("ERROR --> Expected: %s Actual: %s <--", expected, actual)));
     }
 }
