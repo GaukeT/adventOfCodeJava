@@ -50,12 +50,15 @@ public class Day1 extends Day {
                 if (input[i] > maxNr || input[j] > maxNr) break;
 
                 if (nrOfItems == 2) {
-                    if (2020 == add(input[i], input[j])) return multiply(input[i], input[j]);
+                    var sum = add(input[i], input[j]);
+                    if (2020 == sum) return multiply(input[i], input[j]);
+                    else if (sum > 2020) break;
                 } else if (nrOfItems == 3) {
                     for (int z = j + 1 ; z < input.length; z++) {
-                        if (i == z) continue;
-                        if (input[z] > maxNr) continue;
-                        if (2020 == add(input[i], input[j], input[z])) return multiply(input[i], input[j], input[z]);
+                        if (input[z] > maxNr) break;
+                        var sum = add(input[i], input[j], input[z]);
+                        if (2020 == sum) return multiply(input[i], input[j], input[z]);
+                        else if (sum > 2020) break;
                     }
                 } else {
                     throw new IllegalArgumentException("Only 2 and 3 of nrOfItems are implemented.");
