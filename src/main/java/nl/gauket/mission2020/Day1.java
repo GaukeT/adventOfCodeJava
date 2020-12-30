@@ -46,14 +46,13 @@ public class Day1 extends Day {
         var maxNr = 2020 - min;
 
         for (int i = 0; i < input.length; i++) {
-            for (int j = 0; j < input.length; j++) {
-                if (i == j) continue;
+            for (int j = i + 1; j < input.length; j++) {
                 if (input[i] > maxNr || input[j] > maxNr) continue;
 
                 if (nrOfItems == 2) {
                     if (2020 == add(input[i], input[j])) return multiply(input[i], input[j]);
                 } else if (nrOfItems == 3) {
-                    for (int z = 0; z < input.length; z++) {
+                    for (int z = j + 1 ; z < input.length; z++) {
                         if (i == z) continue;
                         if (input[z] > maxNr) continue;
                         if (2020 == add(input[i], input[j], input[z])) return multiply(input[i], input[j], input[z]);
