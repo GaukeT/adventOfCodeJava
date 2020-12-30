@@ -8,12 +8,12 @@ public class Timer {
     }
 
     public static void stop() {
-        System.out.println("Took " + (System.currentTimeMillis() - start) + "ms");
+        System.out.println("(" + (System.currentTimeMillis() - start) + "ms)");
         start = 0L;
     }
 
     public static void stop(String customMessage) {
-        System.out.println("" + customMessage + " " + (System.currentTimeMillis() - start) + "ms");
+        System.out.println("" + customMessage + " (" + (System.currentTimeMillis() - start) + "ms)");
         start = 0L;
     }
 }

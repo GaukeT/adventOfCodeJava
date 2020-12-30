@@ -41,6 +41,6 @@ public class ResultLogger extends Asserter {
 
     public static void printResult(int day, String expected, String result, boolean checkResult) {
         if (checkResult && !"".equals(expected)) AssertEq(expected, result);
-        System.out.println("Result of Day " + day + ": " + result);
+        System.out.print("Result of Day " + day + ": " + result + " ");
     }
 }
