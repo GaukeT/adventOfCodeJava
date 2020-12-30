@@ -49,7 +49,7 @@ public class Day1 extends Day {
         stop();
     }
 
-    private static void part2(int[] input) throws IOException, URISyntaxException {
+    private static void part2(int[] input) {
         start();
         var result = solve(input, 3);
         printResult(DAY, 262738554, result);
