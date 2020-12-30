@@ -19,8 +19,7 @@ public class Day1 extends Day {
 
         start();
         var input = InputReader.readInputAsIntStream(YEAR20, DAY).toArray();
-        // O(n * log(n))
-        Arrays.sort(input);
+        Arrays.sort(input);  // O(n * log(n))
         stop("Parse input");
 
         part1(input.clone());
