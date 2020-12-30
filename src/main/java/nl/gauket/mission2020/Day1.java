@@ -47,7 +47,7 @@ public class Day1 extends Day {
 
         for (int i = 0; i < input.length; i++) {
             for (int j = i + 1; j < input.length; j++) {
-                if (input[i] > maxNr || input[j] > maxNr) continue;
+                if (input[i] > maxNr || input[j] > maxNr) break;
 
                 if (nrOfItems == 2) {
                     if (2020 == add(input[i], input[j])) return multiply(input[i], input[j]);
