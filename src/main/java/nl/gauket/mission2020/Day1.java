@@ -24,6 +24,7 @@ public class Day1 extends Day {
 
         part1(input.clone());
         part1b(input.clone());
+        part1c(input.clone());
         part2(input.clone());
     }
 
@@ -36,7 +37,14 @@ public class Day1 extends Day {
 
     private static void part1b(int[] input) {
         start();
-        var result = solve(input);
+        var result = solveB(input);
+        printResult(DAY, 787776, result);
+        stop();
+    }
+
+    private static void part1c(int[] input) {
+        start();
+        var result = solveC(input); // recursive solution
         printResult(DAY, 787776, result);
         stop();
     }
@@ -48,7 +56,27 @@ public class Day1 extends Day {
         stop();
     }
 
-    private static int solve(int[] input) {
+    private static int solveC(int[] input) {
+        return recSolveC(input, 2020, 0, input.length - 1);
+    }
+
+    private static int recSolveC(int[] input, int target, int i, int j) {
+        if (j < i) return -1;
+
+        var n1 = input[i];
+        var n2 = input[j];
+        var sum = n1 + n2;
+
+        if (sum == target) {
+            return n1 * n2;
+        } else if (sum < target) {
+            return recSolveC(input, target, ++i, j);
+        } else {
+            return recSolveC(input, target, i, --j);
+        }
+    }
+
+    private static int solveB(int[] input) {
         var target = 2020;
         var maxNr = 2020 - input[0];
 
@@ -75,7 +103,7 @@ public class Day1 extends Day {
             }
         }
 
-        return 0;
+        return -1;
     }
 
     public static int solve(int[] input, int nrOfItems) {
