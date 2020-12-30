@@ -19,11 +19,13 @@ public class Day1 extends Day {
 
         start();
         var input = InputReader.readInputAsIntStream(YEAR20, DAY).toArray();
+        // O(n * log(n))
+        Arrays.sort(input);
         stop("Parse input");
 
         part1(input.clone());
         part1b(input.clone());
-        part2();
+        part2(input.clone());
     }
 
     private static void part1(int[] input) {
@@ -40,19 +42,14 @@ public class Day1 extends Day {
         stop();
     }
 
-    private static void part2() throws IOException, URISyntaxException {
+    private static void part2(int[] input) throws IOException, URISyntaxException {
         start();
-        var input = InputReader.readInputAsIntStream(YEAR20, DAY).toArray();
         var result = solve(input, 3);
-
         printResult(DAY, 262738554, result);
         stop();
     }
 
     private static int solve(int[] input) {
-        // O(n * log(n))
-        Arrays.sort(input);
-
         var target = 2020;
         var maxNr = 2020 - input[0];
 
@@ -83,8 +80,6 @@ public class Day1 extends Day {
     }
 
     public static int solve(int[] input, int nrOfItems) {
-        // O(n * log(n))
-        Arrays.sort(input);
         var min = input[0];
         var maxNr = 2020 - min;
 
