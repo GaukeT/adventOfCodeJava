@@ -67,9 +67,7 @@ public class Day1 extends Day {
     private static int solve2B(int[] input) {
         // O(n^2)
         for (var num : input) {
-            var target = 2020 - num;
-            var result = recSolveC(input, target, 0, input.length - 1);
-
+            var result = recSolveC(input, 2020 - num, 0, input.length - 1);
             if (result != -1) return result * num;
         }
 
