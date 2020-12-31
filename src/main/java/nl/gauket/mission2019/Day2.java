@@ -2,9 +2,6 @@ package nl.gauket.mission2019;
 
 import nl.gauket.common.Day;
 
-import java.io.IOException;
-import java.net.URISyntaxException;
-
 import static nl.gauket.common.Calculator.add;
 import static nl.gauket.common.Calculator.multiply;
 import static nl.gauket.common.InputReader.readInputAsIntArray;
@@ -13,12 +10,12 @@ import static nl.gauket.common.ResultLogger.printResult;
 public class Day2 extends Day {
     private static final int DAY = 2;
 
-    public static void main(String[] args) throws IOException, URISyntaxException {
+    public static void main(String[] args) {
         part1();
         part2();
     }
 
-    private static void part1() throws IOException, URISyntaxException {
+    private static void part1() {
         start();
         // part 1 //
         int[] input = readInputAsIntArray(YEAR19, DAY, ",");
@@ -28,7 +25,7 @@ public class Day2 extends Day {
         stop();
     }
 
-    private static void part2() throws IOException, URISyntaxException {
+    private static void part2() {
         start();
         // part 2 //
 

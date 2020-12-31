@@ -4,8 +4,6 @@ import nl.gauket.common.Day;
 import nl.gauket.common.InputReader;
 
 import java.awt.*;
-import java.io.IOException;
-import java.net.URISyntaxException;
 import java.util.ArrayList;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -17,18 +15,18 @@ import static nl.gauket.common.ResultLogger.printResult;
 public class Day3 extends Day {
     private static final int DAY = 3;
 
-    public static void main(String[] args) throws IOException, URISyntaxException {
+    public static void main(String[] args) {
         prepareDaily(YEAR19, DAY);
         part1();
     }
 
-    private static void part1() throws IOException, URISyntaxException {
+    private static void part1() {
         start();
         // part 1 //
         var input = InputReader.readInputAsStringMatrix(YEAR19, DAY);
         var result = solve(input);
 
-        printResult(DAY,0, result);
+        printResult(DAY, 0, result);
         stop();
     }
 

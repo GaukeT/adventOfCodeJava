@@ -3,8 +3,6 @@ package nl.gauket.mission2020;
 import nl.gauket.common.Day;
 import nl.gauket.common.InputReader;
 
-import java.io.IOException;
-import java.net.URISyntaxException;
 import java.util.Arrays;
 
 import static java.util.Arrays.copyOfRange;
@@ -15,13 +13,13 @@ import static nl.gauket.common.ResultLogger.printResult;
 public class Day9 extends Day {
     private static final int DAY = 9;
 
-    public static void main(String[] args) throws IOException, URISyntaxException {
+    public static void main(String[] args) {
         prepareDaily(YEAR20, DAY);
         part1();
         part2();
     }
 
-    private static void part1() throws IOException, URISyntaxException {
+    private static void part1() {
         start();
         // part 1 //
         var input = InputReader.readInputAsLongArray(YEAR20, DAY, "\n");
@@ -31,7 +29,7 @@ public class Day9 extends Day {
         printResult(DAY, "23278925", result);
     }
 
-    private static void part2() throws IOException, URISyntaxException {
+    private static void part2() {
         start();
         // part 2 //
         var input = InputReader.readInputAsLongArray(YEAR20, DAY, "\n");
@@ -42,7 +40,7 @@ public class Day9 extends Day {
     }
 
     public static long solve(long[] input, int preamble, int part) {
-        for (int rowIndex = (preamble+1); rowIndex < input.length; rowIndex++) {
+        for (int rowIndex = (preamble + 1); rowIndex < input.length; rowIndex++) {
 
             var validNum = isValidNum(rowIndex, preamble, input, input[rowIndex]);
 
@@ -56,7 +54,7 @@ public class Day9 extends Day {
     }
 
     private static boolean isValidNum(int start, int preamble, long[] input, long value) {
-        var s = (start-1) - preamble;
+        var s = (start - 1) - preamble;
 
         for (int i = s; i < start; i++) {
             for (int j = s; j < start; j++) {
@@ -75,12 +73,12 @@ public class Day9 extends Day {
         var copy = new long[]{};
 
         for (int i = 0; i < input.length; i++) {
-            for (int j = (i+2); j < input.length; j++) {
-                copy = copyOfRange(input, i, j+1);
+            for (int j = (i + 2); j < input.length; j++) {
+                copy = copyOfRange(input, i, j + 1);
                 sum = stream(copy).sum();
                 if (search == sum) {
                     Arrays.sort(copy);
-                    return add((int) copy[0], (int) copy[copy.length-1]);
+                    return add((int) copy[0], (int) copy[copy.length - 1]);
                 }
             }
         }

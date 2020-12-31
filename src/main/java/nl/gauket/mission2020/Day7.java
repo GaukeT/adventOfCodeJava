@@ -3,8 +3,6 @@ package nl.gauket.mission2020;
 import nl.gauket.common.Day;
 import nl.gauket.common.InputReader;
 
-import java.io.IOException;
-import java.net.URISyntaxException;
 import java.util.*;
 
 import static java.lang.Integer.parseInt;
@@ -14,19 +12,19 @@ import static nl.gauket.common.ResultLogger.printResult;
 public class Day7 extends Day {
     private static final int DAY = 7;
 
-    private static HashMap<String, List<Bag>> bags = new HashMap<>();
-    private static Set<String> bagSet = new HashSet<>();
+    private static final HashMap<String, List<Bag>> bags = new HashMap<>();
+    private static final Set<String> bagSet = new HashSet<>();
 
-    private static List<Integer> content = new ArrayList<>();
+    private static final List<Integer> content = new ArrayList<>();
     private static int bagsNeeded = 0;
 
-    public static void main(String[] args) throws IOException, URISyntaxException {
+    public static void main(String[] args) {
         prepareDaily(YEAR20, DAY);
         part1();
         part2();
     }
 
-    private static void part1() throws IOException, URISyntaxException {
+    private static void part1() {
         start();
         // part 1 //
         var input = InputReader.readInputAsStringArray(YEAR20, DAY);
@@ -36,7 +34,7 @@ public class Day7 extends Day {
         printResult(DAY, 197, result);
     }
 
-    private static void part2() throws IOException, URISyntaxException {
+    private static void part2() {
         start();
         // part 2 //
         var input = InputReader.readInputAsStringArray(YEAR20, DAY);

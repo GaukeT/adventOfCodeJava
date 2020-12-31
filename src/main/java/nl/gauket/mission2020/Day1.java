@@ -111,7 +111,7 @@ public class Day1 extends MyDay {
         // O(n)
         while (j > i) {
             var n2 = input[j];
-            if (n2 > maxNr){
+            if (n2 > maxNr) {
                 j--;
                 continue;
             }

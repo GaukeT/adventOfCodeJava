@@ -3,8 +3,6 @@ package nl.gauket.mission2020;
 import nl.gauket.common.Day;
 import nl.gauket.common.InputReader;
 
-import java.io.IOException;
-import java.net.URISyntaxException;
 import java.util.HashMap;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -18,13 +16,13 @@ import static nl.gauket.common.ResultLogger.printResult;
 public class Day14 extends Day {
     private static final int DAY = 14;
 
-    public static void main(String[] args) throws IOException, URISyntaxException {
+    public static void main(String[] args) {
         prepareDaily(YEAR20, DAY);
         part1();
         part2();
     }
 
-    private static void part1() throws IOException, URISyntaxException {
+    private static void part1() {
         start();
         // part 1 //
         var input = InputReader.readInputAsStringArray(YEAR20, DAY);
@@ -34,7 +32,7 @@ public class Day14 extends Day {
         printResult(DAY, 0, result);
     }
 
-    private static void part2() throws IOException, URISyntaxException {
+    private static void part2() {
         start();
         // part 2 //
         var input = InputReader.readInputAsStringArray(YEAR20, DAY);

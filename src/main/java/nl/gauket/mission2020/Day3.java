@@ -3,22 +3,19 @@ package nl.gauket.mission2020;
 import nl.gauket.common.Day;
 import nl.gauket.common.InputReader;
 
-import java.io.IOException;
-import java.net.URISyntaxException;
-
 import static nl.gauket.common.Calculator.multiply;
 import static nl.gauket.common.ResultLogger.printResult;
 
 public class Day3 extends Day {
     private static final int DAY = 3;
 
-    public static void main(String[] args) throws IOException, URISyntaxException {
+    public static void main(String[] args) {
         prepareDaily(YEAR20, DAY);
         part1();
         part2();
     }
 
-    private static void part1() throws IOException, URISyntaxException {
+    private static void part1() {
         start();
         // part 1 //
         var input = InputReader.readInputAsCharMatrix(YEAR20, DAY);
@@ -28,7 +25,7 @@ public class Day3 extends Day {
         printResult(DAY, 237, result);
     }
 
-    private static void part2() throws IOException, URISyntaxException {
+    private static void part2() {
         start();
         // part 2 //
         var input = InputReader.readInputAsCharMatrix(YEAR20, DAY);

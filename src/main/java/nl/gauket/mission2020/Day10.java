@@ -4,8 +4,6 @@ import nl.gauket.common.Calculator;
 import nl.gauket.common.Day;
 import nl.gauket.common.InputReader;
 
-import java.io.IOException;
-import java.net.URISyntaxException;
 import java.util.Arrays;
 
 import static nl.gauket.common.ResultLogger.printResult;
@@ -13,13 +11,13 @@ import static nl.gauket.common.ResultLogger.printResult;
 public class Day10 extends Day {
     private static final int DAY = 10;
 
-    public static void main(String[] args) throws IOException, URISyntaxException {
+    public static void main(String[] args) {
         prepareDaily(YEAR20, DAY);
         part1();
         part2();
     }
 
-    private static void part1() throws IOException, URISyntaxException {
+    private static void part1() {
         start();
         // part 1 //
         var input = InputReader.readInputAsIntArray(YEAR20, DAY, "\n");
@@ -29,7 +27,7 @@ public class Day10 extends Day {
         printResult(DAY, 2760, result);
     }
 
-    private static void part2() throws IOException, URISyntaxException {
+    private static void part2() {
         start();
         // part 2 //
         var input = InputReader.readInputAsIntArray(YEAR20, DAY, "\n");
@@ -73,7 +71,7 @@ public class Day10 extends Day {
 
                 var diff3 = calculateDiff(i, 3, input);
                 if (diff2 == 2 && isSkippable(diff3)) {
-                    arrangements ++;
+                    arrangements++;
                 }
             }
         }

@@ -3,8 +3,6 @@ package nl.gauket.mission2020;
 import nl.gauket.common.Day;
 import nl.gauket.common.InputReader;
 
-import java.io.IOException;
-import java.net.URISyntaxException;
 import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -18,13 +16,13 @@ public class Day2 extends Day {
     private static final int DAY = 2;
     private static final Pattern p = compile("^(\\d{1,2})-(\\d{1,2}) (\\D): (\\D.*)$");
 
-    public static void main(String[] args) throws IOException, URISyntaxException {
+    public static void main(String[] args) {
         prepareDaily(YEAR20, DAY);
         part1();
         part2();
     }
 
-    private static void part1() throws IOException, URISyntaxException {
+    private static void part1() {
         start();
         // part 1 //
         var input = InputReader.readInputAsStringList(YEAR20, DAY);
@@ -34,7 +32,7 @@ public class Day2 extends Day {
         printResult(DAY, 396, result);
     }
 
-    private static void part2() throws IOException, URISyntaxException {
+    private static void part2() {
         start();
         // part 2 //
         var input = InputReader.readInputAsStringList(YEAR20, DAY);
