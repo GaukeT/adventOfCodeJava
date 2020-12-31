@@ -1,6 +1,9 @@
 package nl.gauket.common;
 
 public interface iDay {
-    long[] solvePart1(String[] input);
-    long[] solvePart2(String[] input);
+    void before(int year, int day);
+
+    long[] solvePart1();
+
+    long[] solvePart2();
 }

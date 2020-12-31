@@ -1,8 +1,6 @@
 package nl.gauket.common;
 
 public class ResultLogger extends Asserter {
-
-    // int result
     public static void printResult(int day, int expected, int result) {
         printResult(day, expected, result, "");
     }
@@ -21,14 +19,13 @@ public class ResultLogger extends Asserter {
         printResult(day, String.valueOf(result), optionalPrint);
     }
 
-    // string result
     public static void printResult(int day, String expected, String result, String optionalPrint) {
         if (!"".equals(expected)) AssertEq(expected, result);
         printResult(day, result, optionalPrint);
     }
 
     public static void printResult(int day, String result, String optionalPrint) {
-        if (!"".equals(optionalPrint)) System.out.print("(" + optionalPrint + ") ");
-        System.out.print("Result of Day " + day + ": " + result + " ");
+        if (!"".equals(optionalPrint)) System.out.println("(" + optionalPrint + ") ");
+        System.out.println("Result of Day " + day + ": " + result + " ");
     }
 }
