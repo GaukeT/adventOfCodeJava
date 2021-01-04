@@ -23,7 +23,7 @@ public class Day10 extends MyDay {
     @Override
     public long[] solvePart2() {
         var result = solve2(INPUT_INT.clone());
-        return new long[]{result, 0};
+        return new long[]{result, 13816758796288L};
     }
 
     public static long solve(int[] input, int part) {
@@ -57,7 +57,11 @@ public class Day10 extends MyDay {
 
         Collections.sort(arrangements, Collections.reverseOrder());
         for (var arr : arrangements) {
-            map.put(arr, map.getOrDefault(arr + 1, 0L) + map.getOrDefault(arr + 2, 0L) + map.getOrDefault(arr + 3, 0L));
+            var diff1 = map.getOrDefault(arr + 1, 0L);
+            var diff2 = map.getOrDefault(arr + 2, 0L);
+            var diff3 = map.getOrDefault(arr + 3, 0L);
+
+            map.put(arr, diff1 + diff2 + diff3);
         }
 
         return map.get(0);
