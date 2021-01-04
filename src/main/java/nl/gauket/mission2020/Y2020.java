@@ -11,17 +11,35 @@ import static nl.gauket.common.Timer.start;
 import static nl.gauket.common.Timer.stop;
 
 public class Y2020 {
-    private static final int DAY = 10;
-    private static final int YEAR = 2020;
+    private static int DAY = 10;
+    private static int YEAR = 2020;
+
+    private static final boolean ALL = true;
 
     public static void main(String[] args) {
+        if (ALL) runAll();
+
         prepareDaily();
         run();
     }
 
+    private static void runAll() {
+        for (MyDay day : KNOWN_DAYS.values()) {
+            run(day);
+        }
+
+        System.exit(0);
+    }
+
     private static void run() {
         MyDay day = KNOWN_DAYS.get(DAY);
+        run(day);
+    }
+
+    private static void run(MyDay day) {
         if (null != day) {
+            var className = day.getClass().getSimpleName();
+            DAY = Integer.parseInt(className.replace("Day", ""));
             before(day);
             solve(day, 1);
             solve(day, 2);

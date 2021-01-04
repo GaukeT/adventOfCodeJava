@@ -4,7 +4,9 @@ import nl.gauket.common.Calculator;
 import nl.gauket.common.InputReader;
 import nl.gauket.common.MyDay;
 
-import java.util.*;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.HashMap;
 import java.util.stream.Collectors;
 
 public class Day10 extends MyDay {
