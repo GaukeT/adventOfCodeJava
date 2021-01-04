@@ -28,7 +28,7 @@ class Day10Test {
         var input = new int[]{16,10,15,5,1,11,7,19,6,12,4};
         var expected = 8;
 
-        var result = Day10.solve(input, 2);
+        var result = Day10.solve2(input);
         assertEquals(expected, result);
     }
 
@@ -37,7 +37,7 @@ class Day10Test {
         var input = new int[]{28,33,18,42,31,14,46,20,48,47,24,23,49,45,19,38,39,11,1,32,25,35,8,17,7,9,4,2,34,10,3};
         var expected = 19208;
 
-        var result = Day10.solve(input, 2);
+        var result = Day10.solve2(input);
         assertEquals(expected, result);
     }
 
