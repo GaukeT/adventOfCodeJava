@@ -23,20 +23,20 @@ public class Day9 extends Day {
         start();
         // part 1 //
         var input = InputReader.readInputAsLongArray(YEAR20, DAY, "\n");
-        var result = String.valueOf(solve(input, 25, 1));
+        var result = solve(input, 25, 1);
 
         stop();
-        printResult(DAY, "23278925", result);
+        printResult(DAY, 23278925, result);
     }
 
     private static void part2() {
         start();
         // part 2 //
         var input = InputReader.readInputAsLongArray(YEAR20, DAY, "\n");
-        var result = String.valueOf(solve(input, 25, 2));
+        var result = solve(input, 25, 2);
 
         stop();
-        printResult(DAY, "4011064", result);
+        printResult(DAY, 4011064, result);
     }
 
     public static long solve(long[] input, int preamble, int part) {

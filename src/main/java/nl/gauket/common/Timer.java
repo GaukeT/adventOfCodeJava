@@ -9,7 +9,7 @@ public class Timer {
 
     public static void stop() {
         var diff = (double) (System.nanoTime() - start) / 1_000_000;
-        System.out.print("\t (" + diff + "ms) : ");
+        System.out.println("(" + diff + "ms)");
         start = 0L;
     }
 

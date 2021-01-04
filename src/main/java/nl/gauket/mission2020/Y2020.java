@@ -68,10 +68,10 @@ public class Y2020 {
             default -> throw new IllegalStateException("Unexpected part: " + part);
         }
 
-        stop();
         var result = retval.length > 0 ? retval[0] : 0L;
         var expected = retval.length > 1 ? retval[1] : 0L;
         printResult(DAY, expected, result);
+        stop();
     }
 
     // configure Day if implemented by MyDay interface
