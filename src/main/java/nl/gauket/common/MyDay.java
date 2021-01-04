@@ -1,7 +1,10 @@
 package nl.gauket.common;
 
+import java.util.List;
+
 public abstract class MyDay implements iDay {
     protected String[] INPUT;
+    protected List<String> INPUT_STR_LIST;
     protected int[] INPUT_INT;
 
     @Override

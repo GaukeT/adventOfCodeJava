@@ -15,7 +15,7 @@ public class ResultLogger extends Asserter {
     }
 
     public static void printResult(int day, long expected, long result, String optionalPrint) {
-        if (0L <= expected) AssertEq(expected, result);
+        if (0L < expected) AssertEq(expected, result);
         printResult(day, String.valueOf(result), optionalPrint);
     }
 

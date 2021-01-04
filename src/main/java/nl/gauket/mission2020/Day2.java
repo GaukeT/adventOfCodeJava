@@ -1,7 +1,7 @@
 package nl.gauket.mission2020;
 
-import nl.gauket.common.Day;
 import nl.gauket.common.InputReader;
+import nl.gauket.common.MyDay;
 
 import java.util.List;
 import java.util.regex.Matcher;
@@ -10,39 +10,27 @@ import java.util.regex.Pattern;
 import static java.lang.Integer.parseInt;
 import static java.lang.String.format;
 import static java.util.regex.Pattern.compile;
-import static nl.gauket.common.ResultLogger.printResult;
 
-public class Day2 extends Day {
-    private static final int DAY = 2;
-    private static final Pattern p = compile("^(\\d{1,2})-(\\d{1,2}) (\\D): (\\D.*)$");
-
-    public static void main(String[] args) {
-        prepareDaily(YEAR20, DAY);
-        part1();
-        part2();
+public class Day2 extends MyDay {
+    @Override
+    public void before(int year, int day) {
+        INPUT_STR_LIST = InputReader.readInputAsStringList(year, day);
     }
 
-    private static void part1() {
-        start();
-        // part 1 //
-        var input = InputReader.readInputAsStringList(YEAR20, DAY);
-        var result = solve(input, 1);
-
-        stop();
-        printResult(DAY, 396, result);
+    @Override
+    public long[] solvePart1() {
+        var result = (long) solve(INPUT_STR_LIST, 1);
+        return new long[]{result, 396};
     }
 
-    private static void part2() {
-        start();
-        // part 2 //
-        var input = InputReader.readInputAsStringList(YEAR20, DAY);
-        var result = solve(input, 2);
-
-        stop();
-        printResult(DAY, 428, result);
+    @Override
+    public long[] solvePart2() {
+        var result = (long) solve(INPUT_STR_LIST, 2);
+        return new long[]{result, 428};
     }
 
     public static int solve(List<String> input, int part) {
+        var p = compile("^(\\d{1,2})-(\\d{1,2}) (\\D): (\\D.*)$");
         int validpasswords = 0;
 
         for (String s : input) {

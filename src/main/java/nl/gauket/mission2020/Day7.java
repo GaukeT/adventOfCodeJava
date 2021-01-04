@@ -1,47 +1,30 @@
 package nl.gauket.mission2020;
 
-import nl.gauket.common.Day;
-import nl.gauket.common.InputReader;
+import nl.gauket.common.MyDay;
 
 import java.util.*;
 
 import static java.lang.Integer.parseInt;
 import static java.util.regex.Pattern.compile;
-import static nl.gauket.common.ResultLogger.printResult;
 
-public class Day7 extends Day {
-    private static final int DAY = 7;
-
+public class Day7 extends MyDay {
     private static final HashMap<String, List<Bag>> bags = new HashMap<>();
     private static final Set<String> bagSet = new HashSet<>();
 
     private static final List<Integer> content = new ArrayList<>();
     private static int bagsNeeded = 0;
 
-    public static void main(String[] args) {
-        prepareDaily(YEAR20, DAY);
-        part1();
-        part2();
+    @Override
+    public long[] solvePart1() {
+        var result = (long) solve(INPUT.clone(), 1);
+        return new long[]{result, 197};
     }
 
-    private static void part1() {
-        start();
-        // part 1 //
-        var input = InputReader.readInputAsStringArray(YEAR20, DAY);
-        var result = solve(input, 1);
+    @Override
+    public long[] solvePart2() {
+        var result = (long) solve(INPUT.clone(), 2);
+        return new long[]{result};
 
-        stop();
-        printResult(DAY, 197, result);
-    }
-
-    private static void part2() {
-        start();
-        // part 2 //
-        var input = InputReader.readInputAsStringArray(YEAR20, DAY);
-        var result = solve(input, 2);
-
-        stop();
-        printResult(DAY, 0, result);
         // 572 to low
         // 696155468 to high
     }
@@ -49,7 +32,6 @@ public class Day7 extends Day {
     public static int solve(String[] input, int part) {
         determineBagContents(input, part);
         findRecursive(bags.get("shiny gold"));
-
 
         if (part == 2) {
             var c = content.stream().reduce(Integer::sum);
@@ -77,14 +59,10 @@ public class Day7 extends Day {
         }
     }
 
-    private static void calculateBagsNeeded(Bag bag) {
-
-    }
-
     private static void determineBagContents(String[] input, int part) {
         for (String row : input) {
-            var bag = getStringValue("^(\\w+ \\w+)", row);
-            var keys = getKeyPair(" ([0-9]) (\\w+ \\w+)", row);
+            var bag = getStringValue(row);
+            var keys = getKeyPair(row);
 
             if (part == 1)
                 keys.forEach((k, v) -> putBagInBags(bag, k, v));
@@ -121,8 +99,8 @@ public class Day7 extends Day {
         }
     }
 
-    private static String getStringValue(String regex, String bagInput) {
-        var pattern = compile(regex);
+    private static String getStringValue(String bagInput) {
+        var pattern = compile("^(\\w+ \\w+)");
         var matcher = pattern.matcher(bagInput);
         if (matcher.find()) {
             return matcher.group(1);
@@ -130,8 +108,8 @@ public class Day7 extends Day {
         return null;
     }
 
-    private static HashMap<String, Integer> getKeyPair(String regex, String bagInput) {
-        var pattern = compile(regex);
+    private static HashMap<String, Integer> getKeyPair(String bagInput) {
+        var pattern = compile(" ([0-9]) (\\w+ \\w+)");
         var matcher = pattern.matcher(bagInput);
         var keys = new HashMap<String, Integer>();
 
