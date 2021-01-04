@@ -20,6 +20,19 @@ class Day14Test {
     }
 
     @Test
+    void part2() {
+        var input = new String[]{
+                "mask = 000000000000000000000000000000X1001X",
+                "mem[42] = 100",
+                "mask = 00000000000000000000000000000000X0XX",
+                "mem[26] = 1"
+        };
+        var expected = 208L;
+        var result = Day14.solve(input, 2);
+        assertEquals(expected, result);
+    }
+
+    @Test
     void setup() {
         /*
             mask = XXXXXXXXXXXXXXXXXXXXXXXXXXXXX1XXXX0X
