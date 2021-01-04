@@ -18,7 +18,6 @@ public class InputService extends Timer {
             start();
             downloadInputFromServer(year, day);
             stop("Download file from server in");
-            System.exit(0);
         }
     }
 

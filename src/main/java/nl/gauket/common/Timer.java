@@ -16,7 +16,6 @@ public class Timer {
     public static void stop(String customMessage) {
         var diff = (double) (System.nanoTime() - start) / 1_000_000;
         System.out.println("> Task :" + customMessage + " (" + diff + "ms)");
-        System.out.println();
         start = 0L;
     }
 }
