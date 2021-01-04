@@ -11,10 +11,10 @@ import static nl.gauket.common.Timer.start;
 import static nl.gauket.common.Timer.stop;
 
 public class Y2020 {
-    private static int DAY = 10;
+    private static int DAY = 15;
     private static int YEAR = 2020;
 
-    private static final boolean ALL = true;
+    private static final boolean ALL = false;
 
     public static void main(String[] args) {
         if (ALL) runAll();
@@ -43,6 +43,8 @@ public class Y2020 {
             before(day);
             solve(day, 1);
             solve(day, 2);
+        } else {
+            System.out.println("> Task :Day" + DAY + " == null");
         }
     }
 
