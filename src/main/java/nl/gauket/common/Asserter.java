@@ -3,15 +3,25 @@ package nl.gauket.common;
 import static java.lang.String.format;
 
 public class Asserter {
-    public static boolean AssertEq(long expected, long actual) {
-        return AssertEq(String.valueOf(expected), String.valueOf(actual));
+    public static boolean AssertEq(long part, long expected, long actual) {
+        if (0L == expected) {
+            printErrorMessage(part, String.valueOf(expected), String.valueOf(actual));
+            return false;
+        }
+        return AssertEq(part, String.valueOf(expected), String.valueOf(actual));
     }
 
-    public static boolean AssertEq(String expected, String actual) {
+    public static boolean AssertEq(long part, String expected, String actual) {
         if (!expected.equals(actual)) {
-            System.out.print((format("\tResult : ERROR -> \n\t\t Expected:\t%s \n\t\t Actual:\t%s \t", expected, actual)));
+            printErrorMessage(part, expected, actual);
             return false;
         }
         return true;
+    }
+
+    private static void printErrorMessage(long part, String expected, String actual) {
+        var message = "ERROR";
+        if ("".equals(expected) || "0".equals(expected)) message = "TODO";
+        System.out.print((format("\tResult (part %d) : %s -> \n\t\t Expected:\t%s \n\t\t Actual:\t%s \t", part, message, expected, actual)));
     }
 }
