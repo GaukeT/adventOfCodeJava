@@ -1,6 +1,5 @@
 package nl.gauket.mission2020;
 
-import nl.gauket.common.Day;
 import nl.gauket.common.InputReader;
 import nl.gauket.common.MyDay;
 
@@ -9,7 +8,6 @@ import java.util.HashSet;
 import java.util.List;
 
 import static java.util.Arrays.asList;
-import static nl.gauket.common.ResultLogger.printResult;
 
 public class Day6 extends MyDay {
     @Override

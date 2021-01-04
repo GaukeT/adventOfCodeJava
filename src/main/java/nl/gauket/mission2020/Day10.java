@@ -1,40 +1,28 @@
 package nl.gauket.mission2020;
 
 import nl.gauket.common.Calculator;
-import nl.gauket.common.Day;
 import nl.gauket.common.InputReader;
+import nl.gauket.common.MyDay;
 
 import java.util.Arrays;
 
-import static nl.gauket.common.ResultLogger.printResult;
-
-public class Day10 extends Day {
-    private static final int DAY = 10;
-
-    public static void main(String[] args) {
-        prepareDaily(YEAR20, DAY);
-        part1();
-        part2();
+public class Day10 extends MyDay {
+    @Override
+    public void before(int year, int day) {
+        INPUT_INT = InputReader.readInputAsIntStream(year, day).toArray();
+        Arrays.sort(INPUT_INT); // O(n * log(n))
     }
 
-    private static void part1() {
-        start();
-        // part 1 //
-        var input = InputReader.readInputAsIntArray(YEAR20, DAY, "\n");
-        var result = solve(input, 1);
-
-        stop();
-        printResult(DAY, 2760, result);
+    @Override
+    public long[] solvePart1() {
+        var result = (long) solve(INPUT_INT.clone(), 1);
+        return new long[]{result, 2760};
     }
 
-    private static void part2() {
-        start();
-        // part 2 //
-        var input = InputReader.readInputAsIntArray(YEAR20, DAY, "\n");
-        var result = solve(input, 2);
-
-        stop();
-        printResult(DAY, 0, result);
+    @Override
+    public long[] solvePart2() {
+        var result = solve(INPUT_INT.clone(), 2);
+        return new long[]{result, 0};
     }
 
     public static int solve(int[] input, int part) {

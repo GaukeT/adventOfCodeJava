@@ -1,7 +1,6 @@
 package nl.gauket.mission2020;
 
-import nl.gauket.common.Day;
-import nl.gauket.common.InputReader;
+import nl.gauket.common.MyDay;
 
 import java.util.HashMap;
 import java.util.regex.Matcher;
@@ -11,40 +10,21 @@ import static java.lang.Integer.parseInt;
 import static java.lang.Long.parseLong;
 import static java.lang.Long.toBinaryString;
 import static java.util.regex.Pattern.compile;
-import static nl.gauket.common.ResultLogger.printResult;
 
-public class Day14 extends Day {
-    private static final int DAY = 14;
-
-    public static void main(String[] args) {
-        prepareDaily(YEAR20, DAY);
-        part1();
-        part2();
+public class Day14 extends MyDay {
+    @Override
+    public long[] solvePart1() {
+        var result = solve(INPUT.clone(), 1);
+        return new long[]{result, 17765746710228L};
     }
 
-    private static void part1() {
-        start();
-        // part 1 //
-        var input = InputReader.readInputAsStringArray(YEAR20, DAY);
-        var result = solve(input, 1);
-
-        stop();
-        printResult(DAY, 0, result);
-    }
-
-    private static void part2() {
-        start();
-        // part 2 //
-        var input = InputReader.readInputAsStringArray(YEAR20, DAY);
-        var result = solve(input, 2);
-
-        stop();
-        printResult(DAY, 0, result);
+    @Override
+    public long[] solvePart2() {
+        var result = solve(INPUT.clone(), 2);
+        return new long[]{result, 0L};
     }
 
     public static long solve(String[] input, int part) {
-        var result = 0;
-
         var memoryAddressSpace = new HashMap<Long, Long>();
 
         var mask = "";

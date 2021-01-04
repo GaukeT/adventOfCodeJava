@@ -1,40 +1,24 @@
 package nl.gauket.mission2020;
 
-import nl.gauket.common.Day;
-import nl.gauket.common.InputReader;
+import nl.gauket.common.MyDay;
 
 import static java.lang.Integer.parseInt;
 import static java.lang.Math.abs;
 import static nl.gauket.common.Calculator.add;
-import static nl.gauket.common.ResultLogger.printResult;
 
-public class Day12 extends Day {
-    private static final int DAY = 12;
-
-    public static void main(String[] args) {
-        prepareDaily(YEAR20, DAY);
-        part1();
-        part2();
+public class Day12 extends MyDay {
+    @Override
+    public long[] solvePart1() {
+        var result = (long) solve(INPUT.clone(), 1);
+        return new long[]{result, 562};
     }
 
-    private static void part1() {
-        start();
-        // part 1 //
-        var input = InputReader.readInputAsStringArray(YEAR20, DAY);
-        var result = solve(input, 1);
+    @Override
+    public long[] solvePart2() {
+        var result = (long) solve(INPUT.clone(), 2);
+        return new long[]{result, 0};
 
-        stop();
-        printResult(DAY, 562, result);
-    }
-
-    private static void part2() {
-        start();
-        // part 2 //
-        var input = InputReader.readInputAsStringArray(YEAR20, DAY);
-        var result = solve(input, 2);
-
-        stop();
-        printResult(DAY, 0, result); // 12592 - 72290  too low
+        // 12592 - 72290  too low
     }
 
     public static int solve(String[] input, int part) {

@@ -11,7 +11,7 @@ import static nl.gauket.common.Timer.start;
 import static nl.gauket.common.Timer.stop;
 
 public class Y2020 {
-    private static final int DAY = 10;
+    private static final int DAY = 14;
     private static final int YEAR = 2020;
 
     public static void main(String[] args) {
@@ -71,7 +71,7 @@ public class Y2020 {
 //        KNOWN_DAYS.put(11, new Day11());
 //        KNOWN_DAYS.put(12, new Day12());
 //        KNOWN_DAYS.put(13, new Day13());
-//        KNOWN_DAYS.put(14, new Day14());
+        KNOWN_DAYS.put(14, new Day14());
         KNOWN_DAYS.put(15, new Day15());
     }
 }
