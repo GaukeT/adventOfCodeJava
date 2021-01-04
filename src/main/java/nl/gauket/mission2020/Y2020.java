@@ -41,6 +41,7 @@ public class Y2020 {
             var className = day.getClass().getSimpleName();
             DAY = Integer.parseInt(className.replace("Day", ""));
             before(day);
+            System.out.println("> Task :Day" + DAY + ".solve()");
             solve(day, 1);
             solve(day, 2);
         } else {
@@ -61,7 +62,6 @@ public class Y2020 {
     public static void solve(MyDay day, int part) {
         start();
         long[] retval;
-
         switch (part) {
             case 1 -> retval = day.solvePart1();
             case 2 -> retval = day.solvePart2();

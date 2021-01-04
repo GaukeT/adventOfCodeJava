@@ -13,12 +13,12 @@ public class InputService extends Timer {
     private final String session = System.getProperty("session");
 
     public void prepareDailyInput(int year, int day) {
+        start();
         if (!checkIfInputExists(year, day)) {
             // get input from AOC
-            start();
             downloadInputFromServer(year, day);
-            stop("Download file from server in");
         }
+        stop("Day" + day + ".prepareDaily()");
     }
 
     private void downloadInputFromServer(int year, int day) {

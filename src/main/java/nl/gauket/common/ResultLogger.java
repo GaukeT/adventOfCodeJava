@@ -25,7 +25,7 @@ public class ResultLogger extends Asserter {
     }
 
     public static void printResult(int day, String result, String optionalPrint) {
-        if (!"".equals(optionalPrint)) System.out.println("(" + optionalPrint + ") ");
+        if (!"".equals(optionalPrint)) System.out.println("\t (" + optionalPrint + ") ");
         System.out.println("Result of Day " + day + ": " + result + " ");
     }
 }
