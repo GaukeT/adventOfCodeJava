@@ -14,7 +14,7 @@ public class Y2020 {
     private static int DAY          = 15;
     private static final int YEAR   = 2020;
 
-    private static final boolean ALL = false;
+    private static final boolean ALL = true;
 
     public static void main(String[] args) {
         if (ALL) runAll();

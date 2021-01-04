@@ -18,7 +18,7 @@ public class Day1 extends MyDay {
     @Override
     public long[] solvePart1() {
         var result = (long) solve(INPUT_INT.clone(), 2);
-        return new long[]{result, 787776};
+        return new long[]{result, 7877760};
     }
 
     @Override

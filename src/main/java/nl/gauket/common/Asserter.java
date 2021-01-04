@@ -20,8 +20,13 @@ public class Asserter {
     }
 
     private static void printErrorMessage(long part, String expected, String actual) {
+        final String RED = "\033[0;31m";
+        final String RESET = "\033[0m";
+
         var message = "ERROR";
         if ("".equals(expected) || "0".equals(expected)) message = "TODO";
-        System.out.print((format("\tResult (part %d) : %s -> \n\t\t Expected:\t%s \n\t\t Actual:\t%s \t", part, message, expected, actual)));
+
+        message = RED + message + " ->" + RESET;
+        System.out.print((format("\tResult (part %d) : %s\n\t\t Expected:\t%s \n\t\t Actual:\t%s \t", part, message, expected, actual)));
     }
 }
