@@ -16,9 +16,7 @@ public class Day12 extends MyDay {
     @Override
     public long[] solvePart2() {
         var result = (long) solve(INPUT.clone(), 2);
-        return new long[]{result, 0};
-
-        // 12592 - 72290  too low
+        return new long[]{result, 101860};
     }
 
     public static int solve(String[] input, int part) {

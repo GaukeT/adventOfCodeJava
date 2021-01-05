@@ -2,7 +2,7 @@ package nl.gauket.mission2020;
 
 import nl.gauket.common.MyDay;
 
-public class Template extends MyDay {
+public class Day13 extends MyDay {
 
     @Override
     public long[] solvePart1() {

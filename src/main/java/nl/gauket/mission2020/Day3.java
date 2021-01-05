@@ -1,38 +1,26 @@
 package nl.gauket.mission2020;
 
-import nl.gauket.common.Day;
 import nl.gauket.common.InputReader;
+import nl.gauket.common.MyDay;
 
 import static nl.gauket.common.Calculator.multiply;
-import static nl.gauket.common.ResultLogger.printResult;
 
-public class Day3 extends Day {
-    private static final int DAY = 3;
-
-    public static void main(String[] args) {
-        prepareDaily(YEAR20, DAY);
-        part1();
-        part2();
+public class Day3 extends MyDay {
+    @Override
+    public void before(int year, int day) {
+        INPUT_CH_MATRIX = InputReader.readInputAsCharMatrix(year, day);
     }
 
-    private static void part1() {
-        start();
-        // part 1 //
-        var input = InputReader.readInputAsCharMatrix(YEAR20, DAY);
-        var result = solve(input, 3, 1);
-
-        stop();
-        printResult(DAY, 237, result);
+    @Override
+    public long[] solvePart1() {
+        var result = solve(INPUT_CH_MATRIX.clone(), 3, 1);;
+        return new long[] {result, 237L};
     }
 
-    private static void part2() {
-        start();
-        // part 2 //
-        var input = InputReader.readInputAsCharMatrix(YEAR20, DAY);
-        var result = solve2(input);
-
-        stop();
-        printResult(DAY, 2106818610, result);
+    @Override
+    public long[] solvePart2() {
+        var result = solve2(INPUT_CH_MATRIX.clone());;
+        return new long[] {result, 2106818610L};
     }
 
     private static int solve2(char[][] input) {

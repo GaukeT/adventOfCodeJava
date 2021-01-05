@@ -1,42 +1,28 @@
 package nl.gauket.mission2020;
 
-import nl.gauket.common.ConsoleWriter;
-import nl.gauket.common.Day;
-import nl.gauket.common.InputReader;
-import nl.gauket.common.InputWriter;
+import nl.gauket.common.*;
 
 import java.util.Arrays;
 
 import static nl.gauket.common.Calculator.add;
 import static nl.gauket.common.ResultLogger.printResult;
 
-public class Day11 extends Day {
-    private static final int DAY = 11;
-
-    public static void main(String[] args) {
-        prepareDaily(YEAR20, DAY);
-        part1();
-        part2();
+public class Day11 extends MyDay {
+    @Override
+    public void before(int year, int day) {
+        INPUT_CH_MATRIX = InputReader.readInputAsCharMatrix(year, day);
     }
 
-    private static void part1() {
-        start();
-        // part 1 //
-        var input = InputReader.readInputAsCharMatrix(YEAR20, DAY);
-        var result = solve(input, 1);
-
-        stop();
-        printResult(DAY, 0, result);
+    @Override
+    public long[] solvePart1() {
+        var result = solve(INPUT_CH_MATRIX.clone(), 1);;
+        return new long[] {result, 2319L};
     }
 
-    private static void part2() {
-        start();
-        // part 2 //
-        var input = InputReader.readInputAsCharMatrix(YEAR20, DAY);
-        var result = solve(input, 2);
-
-        stop();
-        printResult(DAY, 0, result);
+    @Override
+    public long[] solvePart2() {
+        var result = solve(INPUT_CH_MATRIX.clone(), 2);;
+        return new long[] {result, 0L};
     }
 
     public static int solve(char[][] input, int part) {

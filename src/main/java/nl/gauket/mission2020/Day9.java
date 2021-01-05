@@ -1,42 +1,30 @@
 package nl.gauket.mission2020;
 
-import nl.gauket.common.Day;
 import nl.gauket.common.InputReader;
+import nl.gauket.common.MyDay;
 
 import java.util.Arrays;
 
 import static java.util.Arrays.copyOfRange;
 import static java.util.Arrays.stream;
 import static nl.gauket.common.Calculator.add;
-import static nl.gauket.common.ResultLogger.printResult;
 
-public class Day9 extends Day {
-    private static final int DAY = 9;
-
-    public static void main(String[] args) {
-        prepareDaily(YEAR20, DAY);
-        part1();
-        part2();
+public class Day9 extends MyDay {
+    @Override
+    public void before(int year, int day) {
+        INPUT_LONG = InputReader.readInputAsLongArray(year, day, "\n");
     }
 
-    private static void part1() {
-        start();
-        // part 1 //
-        var input = InputReader.readInputAsLongArray(YEAR20, DAY, "\n");
-        var result = solve(input, 25, 1);
-
-        stop();
-        printResult(DAY, 23278925, result);
+    @Override
+    public long[] solvePart1() {
+        var result = solve(INPUT_LONG.clone(), 25, 1);;
+        return new long[] {result, 23278925L};
     }
 
-    private static void part2() {
-        start();
-        // part 2 //
-        var input = InputReader.readInputAsLongArray(YEAR20, DAY, "\n");
-        var result = solve(input, 25, 2);
-
-        stop();
-        printResult(DAY, 4011064, result);
+    @Override
+    public long[] solvePart2() {
+        var result = solve(INPUT_LONG.clone(), 25, 2);;
+        return new long[] {result, 4011064L};
     }
 
     public static long solve(long[] input, int preamble, int part) {

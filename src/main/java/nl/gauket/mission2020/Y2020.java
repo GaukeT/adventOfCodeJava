@@ -82,17 +82,17 @@ public class Y2020 {
     static {
         KNOWN_DAYS.put(1, new Day1());
         KNOWN_DAYS.put(2, new Day2());
-//        KNOWN_DAYS.put(3, new Day3());
+        KNOWN_DAYS.put(3, new Day3());
         KNOWN_DAYS.put(4, new Day4());
         KNOWN_DAYS.put(5, new Day5());
         KNOWN_DAYS.put(6, new Day6());
         KNOWN_DAYS.put(7, new Day7());
         KNOWN_DAYS.put(8, new Day8());
-//        KNOWN_DAYS.put(9, new Day9());
+        KNOWN_DAYS.put(9, new Day9());
         KNOWN_DAYS.put(10, new Day10());
-//        KNOWN_DAYS.put(11, new Day11());
-//        KNOWN_DAYS.put(12, new Day12());
-//        KNOWN_DAYS.put(13, new Day13());
+        KNOWN_DAYS.put(11, new Day11());
+        KNOWN_DAYS.put(12, new Day12());
+        KNOWN_DAYS.put(13, new Day13());
         KNOWN_DAYS.put(14, new Day14());
         KNOWN_DAYS.put(15, new Day15());
     }
