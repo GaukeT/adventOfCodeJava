@@ -1,11 +1,13 @@
 package nl.gauket.mission2020;
 
-import nl.gauket.common.*;
+import nl.gauket.common.ConsoleWriter;
+import nl.gauket.common.InputReader;
+import nl.gauket.common.InputWriter;
+import nl.gauket.common.MyDay;
 
 import java.util.Arrays;
 
 import static nl.gauket.common.Calculator.add;
-import static nl.gauket.common.ResultLogger.printResult;
 
 public class Day11 extends MyDay {
     @Override
@@ -15,14 +17,14 @@ public class Day11 extends MyDay {
 
     @Override
     public long[] solvePart1() {
-        var result = solve(INPUT_CH_MATRIX.clone(), 1);;
-        return new long[] {result, 2319L};
+        var result = solve(INPUT_CH_MATRIX.clone(), 1);
+        return new long[]{result, 2319L};
     }
 
     @Override
     public long[] solvePart2() {
-        var result = solve(INPUT_CH_MATRIX.clone(), 2);;
-        return new long[] {result, 0L};
+        var result = solve(INPUT_CH_MATRIX.clone(), 2);
+        return new long[]{result, 0L};
     }
 
     public static int solve(char[][] input, int part) {

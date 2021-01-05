@@ -13,14 +13,14 @@ public class Day3 extends MyDay {
 
     @Override
     public long[] solvePart1() {
-        var result = solve(INPUT_CH_MATRIX.clone(), 3, 1);;
-        return new long[] {result, 237L};
+        var result = solve(INPUT_CH_MATRIX.clone(), 3, 1);
+        return new long[]{result, 237L};
     }
 
     @Override
     public long[] solvePart2() {
-        var result = solve2(INPUT_CH_MATRIX.clone());;
-        return new long[] {result, 2106818610L};
+        var result = solve2(INPUT_CH_MATRIX.clone());
+        return new long[]{result, 2106818610L};
     }
 
     private static int solve2(char[][] input) {

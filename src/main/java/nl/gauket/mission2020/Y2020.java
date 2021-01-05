@@ -56,7 +56,7 @@ public class Y2020 {
     private static void before(MyDay day) {
         start();
         day.before(YEAR, DAY);
-        System.out.println(""); // new line between days
+        System.out.println(); // new line between days
         stop(day.getClass().getSimpleName() + ".before()");
     }
 

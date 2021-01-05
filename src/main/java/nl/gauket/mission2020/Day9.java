@@ -17,14 +17,14 @@ public class Day9 extends MyDay {
 
     @Override
     public long[] solvePart1() {
-        var result = solve(INPUT_LONG.clone(), 25, 1);;
-        return new long[] {result, 23278925L};
+        var result = solve(INPUT_LONG.clone(), 25, 1);
+        return new long[]{result, 23278925L};
     }
 
     @Override
     public long[] solvePart2() {
-        var result = solve(INPUT_LONG.clone(), 25, 2);;
-        return new long[] {result, 4011064L};
+        var result = solve(INPUT_LONG.clone(), 25, 2);
+        return new long[]{result, 4011064L};
     }
 
     public static long solve(long[] input, int preamble, int part) {
