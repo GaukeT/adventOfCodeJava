@@ -16,27 +16,60 @@ public class Day7 extends MyDay {
 
     @Override
     public long[] solvePart1() {
-        var result = (long) solve(INPUT.clone(), 1);
+        var result = solve(INPUT.clone());
         return new long[]{result, 197};
     }
 
     @Override
     public long[] solvePart2() {
-        var result = (long) solve(INPUT.clone(), 2);
-        return new long[]{result};
-
-        // 572 to low
-        // 696155468 to high
+        var result = solve2(INPUT.clone());
+        return new long[]{result, 85324};
     }
 
-    public static int solve(String[] input, int part) {
-        determineBagContents(input, part);
+    public static long solve2(String[] input) {
+        HashMap<String, List<Bag>> allBags = new HashMap<>();
+
+        for (String row : input) {
+            var bag = getStringValue(row);
+            var keys = getKeyPair(row);
+
+            keys.forEach((k, v) -> putBagInBags2(allBags, bag, k, v));
+        }
+
+        return solve2b(allBags, "shiny gold");
+    }
+
+    private static long solve2b(HashMap<String, List<Bag>> allBags, String label) {
+        var map = new HashMap<String, Long>();
+
+        var inner_bags = allBags.get(label);
+        calc_sum(allBags, map, label, inner_bags, 1L);
+
+        return map.values().stream().reduce(0L, Long::sum);
+    }
+
+    private static void calc_sum(HashMap<String, List<Bag>> allBags, HashMap<String, Long> map, String label, List<Bag> inner_bags, long outer_amount) {
+        if (null == inner_bags) return;
+
+        var inner_bag_count = 0L;
+        for (var inner_bag : inner_bags) {
+            var total = outer_amount * inner_bag.amount;
+            inner_bag_count += total;
+            calc_sum(allBags, map, inner_bag.label, allBags.get(inner_bag.label), total);
+        }
+
+        var bag_total = map.get(label);
+        if (bag_total != null) {
+            map.put(label, inner_bag_count + bag_total);
+        } else {
+            map.put(label, inner_bag_count);
+        }
+    }
+
+    public static long solve(String[] input) {
+        determineBagContents(input);
         findRecursive(bags.get("shiny gold"));
 
-        if (part == 2) {
-            var c = content.stream().reduce(Integer::sum);
-            return c.orElse(0);
-        }
         return bagSet.size();
     }
 
@@ -59,43 +92,40 @@ public class Day7 extends MyDay {
         }
     }
 
-    private static void determineBagContents(String[] input, int part) {
+    private static void determineBagContents(String[] input) {
         for (String row : input) {
             var bag = getStringValue(row);
             var keys = getKeyPair(row);
 
-            if (part == 1)
-                keys.forEach((k, v) -> putBagInBags(bag, k, v));
-            if (part == 2)
-                keys.forEach((k, v) -> putBagInBags2(bag, k, v));
+            keys.forEach((k, v) -> putBagInBags(bags, bag, k, v));
         }
     }
 
-    private static void putBagInBags(String bag, String key, Integer value) {
+    private static void putBagInBags(HashMap<String, List<Bag>> map, String bag, String key, Integer value) {
         if (key == null) return;
 
         var b = new Bag(bag, value);
 
-        if (bags.containsKey(key)) {
-            bags.get(key).add(b);
+        if (map.containsKey(key)) {
+            map.get(key).add(b);
         } else {
             var l = new ArrayList<Bag>();
             l.add(b);
-            bags.put(key, l);
+            map.put(key, l);
         }
     }
 
-    private static void putBagInBags2(String bag, String key, Integer value) {
+    private static void putBagInBags2(HashMap<String, List<Bag>> allBags, String bag, String key, Integer value) {
         if (key == null) return;
 
         var b = new Bag(key, value);
 
-        if (bags.containsKey(bag)) {
-            bags.get(bag).add(b);
+        if (allBags.containsKey(bag)) {
+            allBags.get(bag).add(b);
         } else {
             var l = new ArrayList<Bag>();
             l.add(b);
-            bags.put(bag, l);
+            allBags.put(bag, l);
         }
     }
 
@@ -124,6 +154,7 @@ public class Day7 extends MyDay {
     static class Bag {
         String label;
         Integer amount;
+        long sum = 1L;
 
         public Bag(String label, int amount) {
             this.label = label;
