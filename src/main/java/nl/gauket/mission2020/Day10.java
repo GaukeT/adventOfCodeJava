@@ -29,13 +29,8 @@ public class Day10 extends MyDay {
     }
 
     public static long solve(int[] input, int part) {
-        // JUnit test fail if deleted
-        // moved to before logic. TODO: make test work without
-        Arrays.sort(input);
-
         var oneJolt = 1;
         var treeJolts = 1;
-
 
         for (int i = 0; i < input.length; i++) {
             if (i == input.length - 1) break; // last item

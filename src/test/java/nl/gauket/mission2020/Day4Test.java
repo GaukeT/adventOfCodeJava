@@ -99,21 +99,4 @@ public class Day4Test {
         var result = Day4.solve(new ArrayList<>(input), 2);
         assertEquals(expected, result);
     }
-
-    @Test
-    void part2_hgt() {
-        // hgt (Height) - a number followed by either cm or in:
-        // If cm, the number must be at least 150 and at most 193.
-        // If in, the number must be at least 59 and at most 76
-
-
-        var input = List.of(
-                "ecl:gry pid:860033327 eyr:2020 hcl:ffffffd",
-                "byr:1937 iyr:2017 cid:147 hgt:193cm"
-        );
-        int expected = 1;
-
-        var result = Day4.solve(new ArrayList<>(input), 2);
-        assertEquals(expected, result);
-    }
 }
