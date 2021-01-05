@@ -11,15 +11,17 @@ import static nl.gauket.common.Timer.start;
 import static nl.gauket.common.Timer.stop;
 
 public class Y2020 {
+    // config
     private static int DAY          = 15;
     private static final int YEAR   = 2020;
 
-    private static final boolean ALL = true;
+    // additional config
+    private static final boolean ALL            = true;
+    private static final boolean prepareDaily   = false;
 
     public static void main(String[] args) {
         if (ALL) runAll();
-
-        prepareDaily();
+        if (prepareDaily) prepareDaily();
         run();
     }
 
