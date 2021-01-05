@@ -26,7 +26,6 @@ class Day8Test {
     }
 
     @Test
-    @Disabled("part 2 not implemented yet") // TODO Implement
     void part2() {
         var input = new String[]{
                 "nop +0",
