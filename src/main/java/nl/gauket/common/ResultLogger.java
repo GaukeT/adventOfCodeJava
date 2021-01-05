@@ -1,5 +1,8 @@
 package nl.gauket.common;
 
+import static nl.gauket.common.ConsoleColors.BLACK_BOLD_BRIGHT;
+import static nl.gauket.common.ConsoleColors.RESET;
+
 public class ResultLogger extends Asserter {
     public static void printResult(long part, long expected, long result) {
         if (!AssertEq(part, expected, result)) return;
@@ -12,7 +15,7 @@ public class ResultLogger extends Asserter {
     }
 
     public static void printResult(long part, String result) {
-        System.out.printf("\tResult (part %d) : %s ", part, result);
+        System.out.printf("\tResult (part %d) :%s %s %s ", part, BLACK_BOLD_BRIGHT, result, RESET);
     }
 
     // AOC 2019 TODO: refactor to new standard

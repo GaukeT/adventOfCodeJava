@@ -1,6 +1,8 @@
 package nl.gauket.common;
 
 import static java.lang.String.format;
+import static nl.gauket.common.ConsoleColors.RED;
+import static nl.gauket.common.ConsoleColors.RESET;
 
 public class Asserter {
     public static boolean AssertEq(long part, long expected, long actual) {
@@ -20,9 +22,6 @@ public class Asserter {
     }
 
     private static void printErrorMessage(long part, String expected, String actual) {
-        final String RED = "\033[0;31m";
-        final String RESET = "\033[0m";
-
         var message = "ERROR";
         if ("".equals(expected) || "0".equals(expected)) message = "TODO";
 

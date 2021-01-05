@@ -1,5 +1,8 @@
 package nl.gauket.common;
 
+import static nl.gauket.common.ConsoleColors.CYAN_BOLD;
+import static nl.gauket.common.ConsoleColors.RESET;
+
 public class Timer {
     private static long start;
 
@@ -9,13 +12,13 @@ public class Timer {
 
     public static void stop() {
         var diff = (double) (System.nanoTime() - start) / 1_000_000;
-        System.out.println("(" + diff + "ms)");
+        System.out.println(CYAN_BOLD + "(" + diff + "ms)" + RESET);
         start = 0L;
     }
 
     public static void stop(String customMessage) {
         var diff = (double) (System.nanoTime() - start) / 1_000_000;
-        System.out.println("> Task :" + customMessage + " (" + diff + "ms)");
+        System.out.println("> Task :" + customMessage + CYAN_BOLD + " (" + diff + "ms)" + RESET);
         start = 0L;
     }
 }
