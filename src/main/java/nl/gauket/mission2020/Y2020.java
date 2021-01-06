@@ -102,5 +102,15 @@ public class Y2020 {
         KNOWN_DAYS.put(13, new Day13());
         KNOWN_DAYS.put(14, new Day14());
         KNOWN_DAYS.put(15, new Day15());
+        KNOWN_DAYS.put(16, new Day16());
+        KNOWN_DAYS.put(17, new Day17());
+        KNOWN_DAYS.put(18, new Day18());
+        KNOWN_DAYS.put(19, new Day19());
+        KNOWN_DAYS.put(20, new Day20());
+        KNOWN_DAYS.put(21, new Day21());
+        KNOWN_DAYS.put(22, new Day22());
+        KNOWN_DAYS.put(23, new Day23());
+        KNOWN_DAYS.put(24, new Day24());
+        KNOWN_DAYS.put(25, new Day25());
     }
 }
