@@ -6,6 +6,8 @@ import nl.gauket.common.MyDay;
 import java.util.HashMap;
 import java.util.Map;
 
+import static nl.gauket.common.ConsoleColors.CYAN_BOLD;
+import static nl.gauket.common.ConsoleColors.RESET;
 import static nl.gauket.common.ResultLogger.printResult;
 import static nl.gauket.common.Timer.start;
 import static nl.gauket.common.Timer.stop;
@@ -26,10 +28,13 @@ public class Y2020 {
     }
 
     private static void runAll() {
+        var start = System.currentTimeMillis();
+
         for (MyDay day : KNOWN_DAYS.values()) {
             run(day);
         }
 
+        System.out.println("\n> Task :Y2020.runAll() " + CYAN_BOLD + "(" + (System.currentTimeMillis() - start) + "ms)" + RESET);
         System.exit(0);
     }
 
