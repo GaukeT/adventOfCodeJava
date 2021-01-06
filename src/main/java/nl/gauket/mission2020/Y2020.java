@@ -18,11 +18,12 @@ public class Y2020 {
     private static final int YEAR   = 2020;
 
     // additional config
-    private static final boolean ALL            = true;
-    private static final boolean prepareDaily   = false;
+    private static final boolean RUN_ALL_DAYS = true;
+    private static final boolean prepareDaily = false;
+    private static final boolean writeResults = false;
 
     public static void main(String[] args) {
-        if (ALL) runAll();
+        if (RUN_ALL_DAYS) runAll();
         if (prepareDaily) prepareDaily();
         run();
     }
