@@ -14,7 +14,7 @@ import static nl.gauket.common.Timer.stop;
 
 public class Y2020 {
     // config
-    private static int DAY          = 15;
+    private static int DAY          = 11;
     private static final int YEAR   = 2020;
 
     // additional config
