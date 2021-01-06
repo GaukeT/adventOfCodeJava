@@ -67,10 +67,13 @@ public class Day13 extends MyDay {
         for (var curr : map.keySet()) {
             var index = map.get(curr);
 
+            // searching for new timestamp where modulo of curr and previous checked busses meets zero
             while ((timestamp + index) % curr != 0) {
                 timestamp += jump;
             }
 
+            // jumps in multiples of curr * previous busses
+            // total of jump will always can always be divided by all checked busses.
             jump *= curr;
         }
 
@@ -80,6 +83,7 @@ public class Day13 extends MyDay {
     private static LinkedHashMap<Integer, Integer> determineMap(String[] busses) {
         var map = new LinkedHashMap<Integer, Integer>();
 
+        // skip first; initially starting with jumps of first
         for (int i = 1; i < busses.length; i++) {
             if ("x".equals(busses[i])) continue;
             var curr = Integer.parseInt(busses[i]);
