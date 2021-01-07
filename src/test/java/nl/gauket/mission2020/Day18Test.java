@@ -13,7 +13,7 @@ class Day18Test {
         };
         var expected = 26L;
 
-        var result = Day18.solve(input);
+        var result = Day18.solve(input, false);
         assertEquals(expected, result);
     }
 
@@ -24,7 +24,7 @@ class Day18Test {
         };
         var expected = 437L;
 
-        var result = Day18.solve(input);
+        var result = Day18.solve(input, false);
         assertEquals(expected, result);
     }
 
@@ -35,7 +35,7 @@ class Day18Test {
         };
         var expected = 12240L;
 
-        var result = Day18.solve(input);
+        var result = Day18.solve(input, false);
         assertEquals(expected, result);
     }
 
@@ -46,7 +46,7 @@ class Day18Test {
         };
         var expected = 13632L;
 
-        var result = Day18.solve(input);
+        var result = Day18.solve(input, false);
         assertEquals(expected, result);
     }
 
@@ -57,7 +57,7 @@ class Day18Test {
         };
         var expected = 71L;
 
-        var result = Day18.solve(input);
+        var result = Day18.solve(input, false);
         assertEquals(expected, result);
     }
 
@@ -68,7 +68,7 @@ class Day18Test {
         };
         var expected = 51L;
 
-        var result = Day18.solve(input);
+        var result = Day18.solve(input, false);
         assertEquals(expected, result);
     }
 
@@ -80,7 +80,7 @@ class Day18Test {
         };
         var expected = 52L;
 
-        var result = Day18.solve(input);
+        var result = Day18.solve(input, false);
         assertEquals(expected, result);
     }
 
@@ -91,9 +91,62 @@ class Day18Test {
         };
         var expected = 1_349_899_980L;
 
-        var result = Day18.solve(input);
+        var result = Day18.solve(input, false);
         assertEquals(expected, result);
     }
 
+    @Test
+    void part2() {
+        var input = new String[]{
+                "2 * 3 + (4 * 5)"
+        };
+        var expected = 46L;
 
+        var result = Day18.solve(input, true);
+        assertEquals(expected, result);
+    }
+
+    @Test
+    void part2b() {
+        var input = new String[]{
+                "1 + (2 * 3) + (4 * (5 + 6))"
+        };
+        var expected = 51L;
+
+        var result = Day18.solve(input, true);
+        assertEquals(expected, result);
+    }
+
+    @Test
+    void part2c() {
+        var input = new String[]{
+                "5 + (8 * 3 + 9 + 3 * 4 * 3)"
+        };
+        var expected = 1445L;
+
+        var result = Day18.solve(input, true);
+        assertEquals(expected, result);
+    }
+
+    @Test
+    void part2d() {
+        var input = new String[]{
+                "5 * 9 * (7 * 3 * 3 + 9 * 3 + (8 + 6 * 4))"
+        };
+        var expected = 669060L;
+
+        var result = Day18.solve(input, true);
+        assertEquals(expected, result);
+    }
+
+    @Test
+    void part2e() {
+        var input = new String[]{
+                "((2 + 4 * 9) * (6 + 9 * 8 + 6) + 6) + 2 + 4 * 2"
+        };
+        var expected = 23340L;
+
+        var result = Day18.solve(input, true);
+        assertEquals(expected, result);
+    }
 }
