@@ -31,6 +31,7 @@ public class Day18 extends nl.gauket.common.MyDay {
 
             if (isAdvanced) {
                 if (row.contains("+")) {
+                    if (DEBUG) System.out.println(row);
                     row = matchAndReplace(sub_calc, row, sub_calc.matcher(row), false);
                 }
             }
