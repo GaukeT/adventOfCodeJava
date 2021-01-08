@@ -3,7 +3,6 @@ package nl.gauket.mission2020;
 import nl.gauket.common.MyDay;
 
 import java.util.Arrays;
-import java.util.HashMap;
 import java.util.stream.IntStream;
 
 public class Day15 extends MyDay {
@@ -26,6 +25,7 @@ public class Day15 extends MyDay {
         return new long[]{result, 1708310L};
     }
 
+    /** example of how the bit shifting works, see {@link Day15Test.java } */
     static long solve(int[] input, int totalRounds) {
         // array of long (concat of 2 times 32 bits) with length of rounds as memory
         var memory = new long[totalRounds];
