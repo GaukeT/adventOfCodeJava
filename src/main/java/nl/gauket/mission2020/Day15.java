@@ -25,7 +25,7 @@ public class Day15 extends MyDay {
         return new long[]{result, 1708310L};
     }
 
-    /** example of how the bit shifting works, see {@link Day15Test.java } */
+    /** example of how the bit shifting works, see {@link Day15Test.java} */
     static long solve(int[] input, int totalRounds) {
         // array of long (concat of 2 times 32 bits) with length of rounds as memory
         var memory = new long[totalRounds];
