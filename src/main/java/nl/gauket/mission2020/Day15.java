@@ -27,30 +27,29 @@ public class Day15 extends MyDay {
     }
 
     static long solve(int[] input, int totalRounds) {
-        // TODO: use array of long (2x int) with length of rounds as memory
-        // map of spoken number, last round used
-        var memory = new HashMap<Integer, Integer>();
-
+        // array of long (concat of 2 times 32 bits) with length of rounds as memory
+        var memory = new long[totalRounds];
 
         // put all input numbers into memory
-        for (int i = 0; i < input.length-1; i++) {
-            memory.put(input[i], i+1);
+        for (int i = 0; i < input.length; i++) {
+            // round number = i + 1
+            memory[input[i]] = i + 1;
         }
 
         // determine last spoken
         var curr = input[input.length - 1];
 
         for (int i = input.length; i < totalRounds; i++) {
-            // determine next spoken
-            var next = memory.getOrDefault(curr, 0);
+            var next = (int) (memory[curr] >> 32);
+            var isUsedBefore = next > 0;
 
-            // put curr to memory
-            memory.put(curr, i);
-
-            // curr is never used before
-            if (next == 0) curr = 0;
-            // 1 added, because thinking a round ahead
-            else curr = i - next;
+            if (!isUsedBefore) {
+                memory[next] = memory[next] << 32 | (i + 1);
+                curr = next;
+            } else {
+                curr = (int) memory[curr] - next;
+                memory[curr] = memory[curr] << 32 | (i + 1);
+            }
         }
 
         return curr;
