@@ -22,13 +22,15 @@ public class Day15 extends MyDay {
 
     @Override
     public long[] solvePart2() {
-        var result = solve(INPUT_INT.clone(), 30000000);
+        var result = solve(INPUT_INT.clone(), 30_000_000);
         return new long[]{result, 1708310L};
     }
 
     static long solve(int[] input, int totalRounds) {
+        // TODO: use array of long (2x int) with length of rounds as memory
         // map of spoken number, last round used
         var memory = new HashMap<Integer, Integer>();
+
 
         // put all input numbers into memory
         for (int i = 0; i < input.length-1; i++) {
@@ -46,7 +48,7 @@ public class Day15 extends MyDay {
             memory.put(curr, i);
 
             // curr is never used before
-            if (next == 0) curr = next;
+            if (next == 0) curr = 0;
             // 1 added, because thinking a round ahead
             else curr = i - next;
         }

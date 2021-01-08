@@ -75,6 +75,8 @@ public class Day18 extends nl.gauket.common.MyDay {
         var left = Long.parseLong(toCompute[0]);
         var oparator = toCompute[1];
 
+
+        // TODO: steps of 2 (handle operater and right in one iteration)
         for (int i = 2; i < toCompute.length; i++) {
             if      ("+".equals(toCompute[i])) oparator = "+";
             else if ("*".equals(toCompute[i])) oparator = "*";
