@@ -30,7 +30,7 @@ public class Day18 extends nl.gauket.common.MyDay {
             row = matchAndReplace(sub_sum, row, sub_match, isAdvanced);
 
             if (isAdvanced) {
-                if (row.contains("+")) {
+                if (row.contains("+") && row.contains("*")) {
                     if (DEBUG) System.out.println(row);
                     row = matchAndReplace(sub_calc, row, sub_calc.matcher(row), false);
                 }
@@ -50,7 +50,7 @@ public class Day18 extends nl.gauket.common.MyDay {
             var repl_match = match;
 
             if (isAdvanced) {
-                if (match.contains("+")) {
+                if (match.contains("+") && match.contains("*")) {
                     match = matchAndReplace(sub_calc, match, sub_calc.matcher(match), false);
                 }
             }
@@ -73,20 +73,20 @@ public class Day18 extends nl.gauket.common.MyDay {
 
         var running_total = 0L;
         var left = Long.parseLong(toCompute[0]);
-        var oparator = toCompute[1];
 
+        int i = 1;
+        while (i < toCompute.length) {
+            // pattern of toCompute is always digit, operator, digit, ...
+            var digit = Long.parseLong(toCompute[i+1]);
+            var operator = toCompute[i];
 
-        // TODO: steps of 2 (handle operater and right in one iteration)
-        for (int i = 2; i < toCompute.length; i++) {
-            if      ("+".equals(toCompute[i])) oparator = "+";
-            else if ("*".equals(toCompute[i])) oparator = "*";
-            else {
-                var digit = Long.parseLong(toCompute[i]);
-                if      ("+".equals(oparator)) running_total = left + digit;
-                else if ("*".equals(oparator)) running_total = left * digit;
-
-                left = running_total;
+            switch (operator) {
+                case "+" -> running_total = left + digit;
+                case "*" -> running_total = left * digit;
             }
+
+            left = running_total;
+            i+=2;
         }
 
         return running_total;
