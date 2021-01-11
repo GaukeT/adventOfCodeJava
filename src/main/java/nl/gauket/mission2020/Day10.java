@@ -29,6 +29,8 @@ public class Day10 extends MyDay {
     }
 
     public static long solve(int[] input, int part) {
+        if (part == 2) return solve2(input);
+
         var oneJolt = 1;
         var treeJolts = 1;
 
@@ -44,7 +46,7 @@ public class Day10 extends MyDay {
         return Calculator.multiply(treeJolts, oneJolt);
     }
 
-    public static long solve2(int[] input) {
+    private static long solve2(int[] input) {
         var arrangements = Arrays.stream(input).boxed().collect(Collectors.toList());
         arrangements.add(0);
 
