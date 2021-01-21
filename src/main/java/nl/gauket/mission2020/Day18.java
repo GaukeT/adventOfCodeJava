@@ -14,7 +14,7 @@ public class Day18 extends nl.gauket.common.MyDay {
 
     @Override
     public long[] solvePart2() {
-        var result = solve(INPUT, true);;
+        var result = solve(INPUT, true);
         return new long[]{result, 451_589_894_841_552L};
     }
 
