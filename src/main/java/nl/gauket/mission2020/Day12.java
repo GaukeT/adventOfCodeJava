@@ -49,6 +49,7 @@ public class Day12 extends MyDay {
                 case 'S' -> y -= distance;
                 case 'E' -> x += distance;
                 case 'W' -> x -= distance;
+                default -> throw new IllegalArgumentException("Invalid argument");    
             }
 
             if (DEBUG) System.out.println("x:" + x + " y:" + y);
@@ -111,6 +112,7 @@ public class Day12 extends MyDay {
                     case 'S' -> wy -= distance;
                     case 'E' -> wx += distance;
                     case 'W' -> wx -= distance;
+                    default -> throw new IllegalArgumentException("Invalid instruction");    
                 }
             }
 
