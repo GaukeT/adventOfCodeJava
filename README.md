@@ -5,4 +5,4 @@ This project contains my implementations of the [advent of code](https://advento
 
 ### Configuration
 - Java 14
-- Use `-Dsession=**************` as VM options
+- Use `-Dsession=**************` as VM options _(when logged in in AOC official website, you get a session cookie)_
