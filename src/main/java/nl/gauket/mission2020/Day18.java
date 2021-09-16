@@ -83,7 +83,7 @@ public class Day18 extends nl.gauket.common.MyDay {
             switch (operator) {
                 case "+" -> running_total = left + digit;
                 case "*" -> running_total = left * digit;
-                default -> 0;
+                default -> throw new IllegalStateException("Unexpected value: " + operator);
             }
 
             left = running_total;
