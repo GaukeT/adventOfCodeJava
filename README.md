@@ -3,7 +3,9 @@
 # AdventOfCode
 This project contains my implementations of the [advent of code](https://adventofcode.com/) puzzles
 
-### Configuration
+### Run configuration
+- Use `-Dsession=**************` as VM options _(when logged in in AOC official website, you get a session cookie)_
+
+### Versions
 - Java 16
 - Gradle 7.1
-- Use `-Dsession=**************` as VM options _(when logged in in AOC official website, you get a session cookie)_
