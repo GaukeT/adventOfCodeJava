@@ -12,7 +12,7 @@ import static nl.gauket.common.Calculator.add;
 public class Day9 extends MyDay {
     @Override
     public void before(int year, int day) {
-        INPUT_LONG = InputReader.readInputAsLongArray(year, day, "\n");
+        INPUT_LONG = InputReader.readInputAsLongArray(year, day, "\r\n");
     }
 
     @Override

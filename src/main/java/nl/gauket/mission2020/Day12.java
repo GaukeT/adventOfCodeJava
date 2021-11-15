@@ -34,6 +34,7 @@ public class Day12 extends MyDay {
 
             if ('L' == instruction || 'R' == instruction) {
                 currDir = determineShipDirection(currDir, instruction, distance);
+                continue;
             }
             // Action F means to move forward by the given value in the direction the
             else if ('F' == instruction) {
