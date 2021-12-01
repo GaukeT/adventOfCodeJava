@@ -2,7 +2,7 @@ package nl.gauket.mission2021;
 
 import nl.gauket.common.InputReader;
 
-public class Day1 extends nl.gauket.common.MyDay {
+public class Day1 extends nl.gauket.common.NewDay {
     @Override
     public void before(int year, int day) {
         INPUT_INT = InputReader.readInputAsIntStream(year, day).toArray();
