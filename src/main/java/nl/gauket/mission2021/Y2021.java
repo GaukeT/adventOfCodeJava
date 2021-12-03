@@ -18,11 +18,12 @@ public class Y2021 {
         }
     }
 
-    // configure Day if implemented by MyDay interface
+    // add day if extends NewDay abstract class
     private static final List<NewDay> KNOWN_DAYS = new ArrayList<>();
 
     static {
         KNOWN_DAYS.add(new Day1());
         KNOWN_DAYS.add(new Day2());
+        KNOWN_DAYS.add(new Day3());
     }
 }
