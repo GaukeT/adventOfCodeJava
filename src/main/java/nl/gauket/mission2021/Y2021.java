@@ -7,7 +7,6 @@ import java.util.List;
 
 public class Y2021 {
     private static final int YEAR   = 2021;
-    private static final boolean prepareDaily = true;
 
     public static void main(String[] args) {
         runAll();
@@ -15,7 +14,7 @@ public class Y2021 {
 
     private static void runAll() {
         for (var day : KNOWN_DAYS) {
-            day.run(YEAR, prepareDaily);
+            day.run(YEAR, true);
         }
     }
 
