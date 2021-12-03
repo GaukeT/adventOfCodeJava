@@ -9,7 +9,7 @@ import static nl.gauket.common.InputWriter.checkIfInputExists;
 import static nl.gauket.common.InputWriter.writeToFile;
 
 public class InputService extends Timer {
-    private static final String url = "https://adventofcode.com/%s/day/%s/input";
+    private static final String URL = "https://adventofcode.com/%s/day/%s/input";
     private final String session = System.getProperty("session");
 
     public void prepareDailyInput(int year, int day) {
@@ -22,10 +22,10 @@ public class InputService extends Timer {
     }
 
     private void downloadInputFromServer(int year, int day) {
-        String urlAoc = String.format(url, year, day);
+        String urlAoc = String.format(URL, year, day);
 
         if (!requestInputFromServer(urlAoc, year, day))
-            throw new RuntimeException("Something went wrong downloading input from AOC server");
+            throw new IllegalCallerException("Something went wrong downloading input from AOC server");
     }
 
     private boolean requestInputFromServer(String urlAoc, int year, int day) {

@@ -10,6 +10,9 @@ import java.util.List;
 import java.util.stream.IntStream;
 
 public class InputReader {
+    private InputReader() {
+    }
+
     public static IntStream readInputAsIntStream(int year, int day) {
         return filesReadAllLines(year, day)
                 .stream()

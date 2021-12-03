@@ -5,15 +5,15 @@ import static nl.gauket.common.ConsoleColors.RED;
 import static nl.gauket.common.ConsoleColors.RESET;
 
 public class Asserter {
-    public static boolean AssertEq(long part, long expected, long actual) {
+    public static boolean assertEq(long part, long expected, long actual) {
         if (0L == expected) {
             printErrorMessage(part, String.valueOf(expected), String.valueOf(actual));
             return false;
         }
-        return AssertEq(part, String.valueOf(expected), String.valueOf(actual));
+        return assertEq(part, String.valueOf(expected), String.valueOf(actual));
     }
 
-    public static boolean AssertEq(long part, String expected, String actual) {
+    public static boolean assertEq(long part, String expected, String actual) {
         if (!expected.equals(actual)) {
             printErrorMessage(part, expected, actual);
             return false;

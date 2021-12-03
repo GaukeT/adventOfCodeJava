@@ -5,12 +5,12 @@ import static nl.gauket.common.ConsoleColors.RESET;
 
 public class ResultLogger extends Asserter {
     public static void printResult(long part, long expected, long result) {
-        if (!AssertEq(part, expected, result)) return;
+        if (!assertEq(part, expected, result)) return;
         printResult(part, String.valueOf(result));
     }
 
     public static void printResult(long part, String expected, String result) {
-        if (AssertEq(part, expected, result)) return;
+        if (assertEq(part, expected, result)) return;
         printResult(part, result);
     }
 
@@ -20,7 +20,7 @@ public class ResultLogger extends Asserter {
 
     // AOC 2019 TODO: refactor to new standard
     public static void printResult(int day, long expected, long result) {
-        if (0L != expected) if (!AssertEq(0L, expected, result)) return;
+        if (0L != expected) if (!assertEq(0L, expected, result)) return;
         printResult(0L, String.valueOf(result));
     }
 }

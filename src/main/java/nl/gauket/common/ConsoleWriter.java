@@ -1,11 +1,12 @@
 package nl.gauket.common;
 
 public class ConsoleWriter {
-    public static void printGrid(char[][] grid) {
+    private ConsoleWriter() {}
 
-        for (int i = 0; i < grid.length; i++) {
-            for (int j = 0; j < grid[i].length; j++) {
-                InputWriter.debug(grid[i][j] + " ", false);
+    public static void printGrid(char[][] grid) {
+        for (char[] chars : grid) {
+            for (char aChar : chars) {
+                InputWriter.debug(aChar + " ", false);
             }
             InputWriter.debug("", true); // TODO: possible refactor/remove
         }

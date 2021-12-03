@@ -6,6 +6,9 @@ import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
 
 public class InputWriter {
+    private InputWriter() {
+    }
+
     public static void writeToFile(int year, int day, InputStream in) throws IOException {
         String filename = String.format("src/main/resources/%s/input%s.txt", year, day);
         String filename2 = String.format("build/resources/main/%s/input%s.txt", year, day);
@@ -20,37 +23,19 @@ public class InputWriter {
     }
 
     public static void debug(String str, boolean newLine) {
-        try {
-            BufferedWriter writer = new BufferedWriter(new FileWriter("debug.txt", true));
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter("debug.txt", true))) {
             writer.append(str);
             if (newLine) writer.append('\n');
-            writer.close();
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
 
     public static void clearDebugfile() {
-        FileWriter fwOb = null;
-        PrintWriter pwOb = null;
-        try {
-            fwOb = new FileWriter("debug.txt", false);
-            pwOb = new PrintWriter(fwOb, false);
+        try (FileWriter fwOb = new FileWriter("debug.txt", false)) {
+            try (PrintWriter pwOb = new PrintWriter(fwOb, false)) {}
         } catch (IOException e) {
             e.printStackTrace();
-        } finally {
-            if (pwOb != null) {
-                pwOb.flush();
-                pwOb.close();
-            }
-            try {
-                if (fwOb != null) {
-                    fwOb.close();
-                }
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
         }
-
     }
 }

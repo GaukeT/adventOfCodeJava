@@ -4,6 +4,8 @@ import static nl.gauket.common.ConsoleColors.CYAN_BOLD;
 import static nl.gauket.common.ConsoleColors.RESET;
 
 public class Timer {
+    private Timer() {}
+
     private static long start;
 
     public static void start() {
