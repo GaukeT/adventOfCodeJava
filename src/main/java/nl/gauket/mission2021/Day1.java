@@ -1,8 +1,9 @@
 package nl.gauket.mission2021;
 
 import nl.gauket.common.InputReader;
+import nl.gauket.common.NewDay;
 
-public class Day1 extends nl.gauket.common.NewDay {
+public class Day1 extends NewDay {
     @Override
     public void before(int year, int day) {
         INPUT_INT = InputReader.readInputAsIntStream(year, day).toArray();
@@ -10,31 +11,41 @@ public class Day1 extends nl.gauket.common.NewDay {
 
     @Override
     public long[] solvePart1() {
-        var result = 0;
-        var prev = INPUT_INT[0];
-        for (int i = 1; i < INPUT_INT.length; i++) {
-            var m = INPUT_INT[i];
-            if (m > prev) result++;
-            prev = m;
-        }
-
+        var result = solveFirst(INPUT_INT.clone());
         return new long[] {result, 1466};
     }
 
     @Override
     public long[] solvePart2() {
+        var result = solveSecond(INPUT_INT.clone());
+        return new long[] {result, 1491};
+    }
+
+    public static long solveFirst(int[] input) {
         var result = 0;
-        var prev = getSumOfWindowAtIndex(0);
-        for (int i = 1; i < INPUT_INT.length-2; i++) {
-            var m = getSumOfWindowAtIndex(i);
+        var prev = input[0];
+        for (int i = 1; i < input.length; i++) {
+            var m = input[i];
             if (m > prev) result++;
             prev = m;
         }
 
-        return new long[] {result, 1491};
+        return result;
     }
 
-    private int getSumOfWindowAtIndex(int i) {
-        return INPUT_INT[i] + INPUT_INT[i+1] + INPUT_INT[i+2];
+    public static long solveSecond(int[] input) {
+        var result = 0;
+        var prev = getSumOfWindowAtIndex(input, 0);
+        for (int i = 1; i < input.length-2; i++) {
+            var m = getSumOfWindowAtIndex(input, i);
+            if (m > prev) result++;
+            prev = m;
+        }
+
+        return result;
+    }
+
+    private static int getSumOfWindowAtIndex(int[] input, int i) {
+        return input[i] + input[i+1] + input[i+2];
     }
 }

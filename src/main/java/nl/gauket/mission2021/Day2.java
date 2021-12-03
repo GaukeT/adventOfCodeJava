@@ -5,10 +5,21 @@ import nl.gauket.common.NewDay;
 public class Day2 extends NewDay {
     @Override
     public long[] solvePart1() {
-        var position = 0;
-        var depth = 0;
+        var result = solveFirst(INPUT.clone());
+        return new long[] {result, 2039256};
+    }
 
-        for (var cmds: INPUT) {
+    @Override
+    public long[] solvePart2() {
+        var result = solveSecond(INPUT.clone());
+        return new long[] {result, 1856459736};
+    }
+
+    public static long solveFirst(String[] input) {
+        var position = 0L;
+        var depth = 0L;
+
+        for (var cmds: input) {
             var cmd = cmds.split(" ");
 
             if (cmd[0].equals("forward")) {
@@ -20,18 +31,15 @@ public class Day2 extends NewDay {
             }
         }
 
-        var result = position * depth;
-
-        return new long[] {result, 2039256};
+        return position * depth;
     }
 
-    @Override
-    public long[] solvePart2() {
-        var position = 0;
-        var depth = 0;
-        var aim = 0;
+    public static long solveSecond(String[] input) {
+        var position = 0L;
+        var depth = 0L;
+        var aim = 0L;
 
-        for (var cmds: INPUT) {
+        for (var cmds: input) {
             var cmd = cmds.split(" ");
 
             if (cmd[0].equals("forward")) {
@@ -44,8 +52,6 @@ public class Day2 extends NewDay {
             }
         }
 
-        var result = position * depth;
-
-        return new long[] {result, 1856459736};
+        return position * depth;
     }
 }

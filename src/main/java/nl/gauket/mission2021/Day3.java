@@ -8,11 +8,22 @@ public class Day3 extends NewDay {
 
     @Override
     public long[] solvePart1() {
+        var result = solveFirst(INPUT.clone());
+        return new long[]{result, 2250414};
+    }
+
+    @Override
+    public long[] solvePart2() {
+        var result = solveSecond(INPUT.clone());
+        return new long[] {result, 6085575};
+    }
+
+    public static long solveFirst(String[] input) {
         StringBuilder sGamma = new StringBuilder();
         StringBuilder sEpsilon = new StringBuilder();
 
-        var count = new int[12];
-        for (var str : INPUT) {
+        var count = new int[input[0].split("").length];
+        for (var str : input) {
             var splitted = str.split("");
             for (int j = 0; j < splitted.length; j++) {
                 if (splitted[j].equals("0")) {
@@ -36,48 +47,42 @@ public class Day3 extends NewDay {
         var gamma = Long.parseLong(sGamma.toString(), 2);
         var epsilon = Long.parseLong(sEpsilon.toString(), 2);
 
-        long result = gamma * epsilon;
-
-        return new long[]{result, 2250414};
+        return gamma * epsilon;
     }
 
-    @Override
-    public long[] solvePart2() {
-        var inputOxy = INPUT.clone();
-        var inputScr = INPUT.clone();
+    public static long solveSecond(String[] input) {
+        var inputOxy = input.clone();
+        var inputScr = input.clone();
 
         var oxygen = 0L;
         var scrubber = 0L;
 
         for (int i = 0; i < 12; i++) {
-            int finalI = i;
-
             var most = findMostCommonAtIndex(inputOxy, i);
-            if (inputOxy.length > 1) {
-                inputOxy = Arrays.stream(inputOxy)
-                        .filter(str -> str.charAt(finalI) == most)
-                        .toArray(String[]::new);
-
-                if (inputOxy.length <= 1) oxygen = Long.parseLong(inputOxy[0], 2);
-            }
+            inputOxy = filter(inputOxy, i, most);
+            if (inputOxy.length <= 1) oxygen = Long.parseLong(inputOxy[0], 2);
 
             var least = findMostCommonAtIndex(inputScr, i) == '1' ? '0' : '1';
-            if (inputScr.length > 1) {
-                inputScr = Arrays.stream(inputScr)
-                        .filter(str -> str.charAt(finalI) == least)
-                        .toArray(String[]::new);
+            inputScr = filter(inputScr, i, least);
+            if (inputScr.length <= 1) scrubber = Long.parseLong(inputScr[0], 2);
 
-                if (inputScr.length <= 1) scrubber = Long.parseLong(inputScr[0], 2);
-            }
-
+            // break if all arrays filtered down to 1 item
             if (inputScr.length <= 1 && inputOxy.length <= 1) break;
         }
 
-        var result = oxygen * scrubber;
-        return new long[] {result, 6085575};
+        return oxygen * scrubber;
     }
 
-    private char findMostCommonAtIndex(String[] input, int index) {
+    private static String[] filter(String[] input, int index, char match) {
+        if (input.length > 1) {
+            return Arrays.stream(input)
+                    .filter(str -> str.charAt(index) == match)
+                    .toArray(String[]::new);
+        }
+        return input;
+    }
+
+    private static char findMostCommonAtIndex(String[] input, int index) {
         var retval = 0;
 
         for (var entry : input) {
