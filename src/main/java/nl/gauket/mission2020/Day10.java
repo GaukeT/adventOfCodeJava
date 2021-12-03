@@ -2,14 +2,14 @@ package nl.gauket.mission2020;
 
 import nl.gauket.common.Calculator;
 import nl.gauket.common.InputReader;
-import nl.gauket.common.MyDay;
+import nl.gauket.common.NewDay;
 
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.stream.Collectors;
 
-public class Day10 extends MyDay {
+public class Day10 extends NewDay {
     @Override
     public void before(int year, int day) {
         INPUT_INT = InputReader.readInputAsIntStream(year, day).toArray();

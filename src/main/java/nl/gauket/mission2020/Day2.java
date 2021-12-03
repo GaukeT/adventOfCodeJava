@@ -1,7 +1,7 @@
 package nl.gauket.mission2020;
 
 import nl.gauket.common.InputReader;
-import nl.gauket.common.MyDay;
+import nl.gauket.common.NewDay;
 
 import java.util.List;
 import java.util.regex.Matcher;
@@ -11,7 +11,7 @@ import static java.lang.Integer.parseInt;
 import static java.lang.String.format;
 import static java.util.regex.Pattern.compile;
 
-public class Day2 extends MyDay {
+public class Day2 extends NewDay {
     @Override
     public void before(int year, int day) {
         INPUT_STR_LIST = InputReader.readInputAsStringList(year, day);

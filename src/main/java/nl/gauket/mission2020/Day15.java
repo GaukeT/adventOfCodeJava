@@ -1,11 +1,11 @@
 package nl.gauket.mission2020;
 
-import nl.gauket.common.MyDay;
+import nl.gauket.common.NewDay;
 
 import java.util.Arrays;
 import java.util.stream.IntStream;
 
-public class Day15 extends MyDay {
+public class Day15 extends NewDay {
     @Override
     public void before(int year, int day) {
         super.before(year, day);

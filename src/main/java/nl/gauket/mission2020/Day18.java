@@ -5,7 +5,7 @@ import java.util.regex.Pattern;
 
 import static java.util.regex.Pattern.compile;
 
-public class Day18 extends nl.gauket.common.MyDay {
+public class Day18 extends nl.gauket.common.NewDay {
     @Override
     public long[] solvePart1() {
         var result = solve(INPUT, false);

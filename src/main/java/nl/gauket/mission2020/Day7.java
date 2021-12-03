@@ -1,13 +1,13 @@
 package nl.gauket.mission2020;
 
-import nl.gauket.common.MyDay;
+import nl.gauket.common.NewDay;
 
 import java.util.*;
 
 import static java.lang.Integer.parseInt;
 import static java.util.regex.Pattern.compile;
 
-public class Day7 extends MyDay {
+public class Day7 extends NewDay {
     private static final HashMap<String, List<Bag>> bags = new HashMap<>();
     private static final Set<String> bagSet = new HashSet<>();
 

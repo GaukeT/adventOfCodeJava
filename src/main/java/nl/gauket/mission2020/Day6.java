@@ -1,7 +1,7 @@
 package nl.gauket.mission2020;
 
 import nl.gauket.common.InputReader;
-import nl.gauket.common.MyDay;
+import nl.gauket.common.NewDay;
 
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -9,7 +9,7 @@ import java.util.List;
 
 import static java.util.Arrays.asList;
 
-public class Day6 extends MyDay {
+public class Day6 extends NewDay {
     @Override
     public void before(int year, int day) {
         INPUT_STR_LIST = InputReader.readInputAsStringList(year, day);

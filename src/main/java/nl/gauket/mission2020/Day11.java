@@ -3,13 +3,13 @@ package nl.gauket.mission2020;
 import nl.gauket.common.ConsoleWriter;
 import nl.gauket.common.InputReader;
 import nl.gauket.common.InputWriter;
-import nl.gauket.common.MyDay;
+import nl.gauket.common.NewDay;
 
 import java.util.Arrays;
 
 import static nl.gauket.common.Calculator.add;
 
-public class Day11 extends MyDay {
+public class Day11 extends NewDay {
     @Override
     public void before(int year, int day) {
         INPUT_CH_MATRIX = InputReader.readInputAsCharMatrix(year, day);

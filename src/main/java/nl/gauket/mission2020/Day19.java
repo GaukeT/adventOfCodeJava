@@ -1,6 +1,6 @@
 package nl.gauket.mission2020;
 
-public class Day19 extends nl.gauket.common.MyDay {
+public class Day19 extends nl.gauket.common.NewDay {
     @Override
     public long[] solvePart1() {
         var result = 0L;

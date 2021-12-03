@@ -1,6 +1,6 @@
 package nl.gauket.mission2020;
 
-import nl.gauket.common.MyDay;
+import nl.gauket.common.NewDay;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -8,7 +8,7 @@ import java.util.Collections;
 import static java.lang.Math.ceil;
 import static java.lang.Math.floor;
 
-public class Day5 extends MyDay {
+public class Day5 extends NewDay {
     @Override
     public long[] solvePart1() {
         var result = (long) solve(INPUT.clone(), 1);

@@ -1,10 +1,10 @@
 package nl.gauket.mission2020;
 
-import nl.gauket.common.MyDay;
+import nl.gauket.common.NewDay;
 
 import static java.lang.Integer.parseInt;
 
-public class Day8 extends MyDay {
+public class Day8 extends NewDay {
     @Override
     public long[] solvePart1() {
         var result = (long) solve(INPUT.clone(), 1);

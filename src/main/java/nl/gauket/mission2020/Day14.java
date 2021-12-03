@@ -1,6 +1,6 @@
 package nl.gauket.mission2020;
 
-import nl.gauket.common.MyDay;
+import nl.gauket.common.NewDay;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -13,7 +13,7 @@ import static java.lang.Long.parseLong;
 import static java.lang.Long.toBinaryString;
 import static java.util.regex.Pattern.compile;
 
-public class Day14 extends MyDay {
+public class Day14 extends NewDay {
     @Override
     public long[] solvePart1() {
         var result = solve(INPUT.clone(), 1);

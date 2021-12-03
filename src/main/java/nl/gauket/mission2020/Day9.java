@@ -1,7 +1,7 @@
 package nl.gauket.mission2020;
 
 import nl.gauket.common.InputReader;
-import nl.gauket.common.MyDay;
+import nl.gauket.common.NewDay;
 
 import java.util.Arrays;
 
@@ -9,7 +9,7 @@ import static java.util.Arrays.copyOfRange;
 import static java.util.Arrays.stream;
 import static nl.gauket.common.Calculator.add;
 
-public class Day9 extends MyDay {
+public class Day9 extends NewDay {
     @Override
     public void before(int year, int day) {
         INPUT_LONG = InputReader.readInputAsLongArray(year, day, "\r\n");

@@ -1,10 +1,10 @@
 package nl.gauket.mission2020;
 
-import nl.gauket.common.MyDay;
+import nl.gauket.common.NewDay;
 
 import java.util.LinkedHashMap;
 
-public class Day13 extends MyDay {
+public class Day13 extends NewDay {
 
     @Override
     public long[] solvePart1() {
