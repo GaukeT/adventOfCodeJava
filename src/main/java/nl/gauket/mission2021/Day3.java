@@ -1,14 +1,10 @@
 package nl.gauket.mission2021;
 
-import nl.gauket.common.InputReader;
 import nl.gauket.common.NewDay;
 
-public class Day3 extends NewDay {
+import java.util.Arrays;
 
-    @Override
-    public void before(int year, int day) {
-        INPUT_CH_MATRIX = InputReader.readInputAsCharMatrix(year, day);
-    }
+public class Day3 extends NewDay {
 
     @Override
     public long[] solvePart1() {
@@ -16,9 +12,10 @@ public class Day3 extends NewDay {
         StringBuilder sEpsilon = new StringBuilder();
 
         var count = new int[12];
-        for (char[] input_ch_matrix : INPUT_CH_MATRIX) {
-            for (int j = 0; j < input_ch_matrix.length; j++) {
-                if (input_ch_matrix[j] == '0') {
+        for (var str : INPUT) {
+            var splitted = str.split("");
+            for (int j = 0; j < splitted.length; j++) {
+                if (splitted[j].equals("0")) {
                     count[j] -= 1;
                 } else {
                     count[j] += 1;
@@ -26,7 +23,7 @@ public class Day3 extends NewDay {
             }
         }
 
-        for (var x: count) {
+        for (var x : count) {
             if (x > 0) {
                 sGamma.append("1");
                 sEpsilon.append("0");
@@ -41,22 +38,55 @@ public class Day3 extends NewDay {
 
         long result = gamma * epsilon;
 
-        return new long[] {result, 2250414};
+        return new long[]{result, 2250414};
     }
 
     @Override
     public long[] solvePart2() {
-        var result = 0;
-        return new long[] {result};
-    }
+        var inputOxy = INPUT.clone();
+        var inputScr = INPUT.clone();
 
-    private int findMostCommonAtIndex(char[][] input, int index) {
-        var retval = 0;
+        var oxygen = 0L;
+        var scrubber = 0L;
 
-        for(var entry: input) {
-            retval += entry[index] == '0' ? -1 : 1;
+        for (int i = 0; i < 12; i++) {
+            int finalI = i;
+
+            var most = findMostCommonAtIndex(inputOxy, i);
+            if (inputOxy.length > 1) {
+                inputOxy = Arrays.stream(inputOxy)
+                        .filter(str -> str.charAt(finalI) == most)
+                        .toArray(String[]::new);
+
+                if (inputOxy.length <= 1) oxygen = Long.parseLong(inputOxy[0], 2);
+            }
+
+            var least = findMostCommonAtIndex(inputScr, i) == '1' ? '0' : '1';
+            if (inputScr.length > 1) {
+                inputScr = Arrays.stream(inputScr)
+                        .filter(str -> str.charAt(finalI) == least)
+                        .toArray(String[]::new);
+
+                if (inputScr.length <= 1) scrubber = Long.parseLong(inputScr[0], 2);
+            }
+
+            if (inputScr.length <= 1 && inputOxy.length <= 1) break;
         }
 
-        return retval;
+        var result = oxygen * scrubber;
+        return new long[] {result, 6085575};
+    }
+
+    private char findMostCommonAtIndex(String[] input, int index) {
+        var retval = 0;
+
+        for (var entry : input) {
+            retval += entry.charAt(index) == '0' ? -1 : 1;
+        }
+
+        // negative value means more zeros
+        // positive value means more ones
+        // return '1' if equal amount of zeros and ones
+        return retval >= 0 ? '1' : '0';
     }
 }
