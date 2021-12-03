@@ -1,7 +1,7 @@
 package nl.gauket.mission2019;
 
-import nl.gauket.common.Day;
 import nl.gauket.common.InputReader;
+import nl.gauket.common.NewDay;
 
 import java.awt.*;
 import java.util.ArrayList;
@@ -10,24 +10,22 @@ import java.util.regex.Pattern;
 
 import static java.lang.Integer.parseInt;
 import static java.util.regex.Pattern.compile;
-import static nl.gauket.common.ResultLogger.printResult;
 
-public class Day3 extends Day {
-    private static final int DAY = 3;
-
-    public static void main(String[] args) {
-        prepareDaily(YEAR19, DAY);
-        part1();
+public class Day3 extends NewDay {
+    @Override
+    public void before(int year, int day) {
+        INPUT_STR_MATRIX = InputReader.readInputAsStringMatrix(year, day);
     }
 
-    private static void part1() {
-        start();
-        // part 1 //
-        var input = InputReader.readInputAsStringMatrix(YEAR19, DAY);
-        var result = solve(input);
+    @Override
+    public long[] solvePart1() {
+        var result = solve(INPUT_STR_MATRIX.clone());
+        return new long[] {result, 308};
+    }
 
-        printResult(DAY, 0, result);
-        stop();
+    @Override
+    public long[] solvePart2() {
+        return new long[0];
     }
 
     public static int solve(String[][] input) {
@@ -39,14 +37,14 @@ public class Day3 extends Day {
         var intersections = determineIntersections(line1, line2);
 
         for (Point p : intersections) {
-            int dist = CalculateManhattanDistance(1, p.x, 1, p.y);
+            int dist = calculateManhattanDistance(1, p.x, 1, p.y);
             if (dist < closest) closest = dist;
         }
 
         return closest;
     }
 
-    public static int CalculateManhattanDistance(int x1, int x2, int y1, int y2) {
+    public static int calculateManhattanDistance(int x1, int x2, int y1, int y2) {
         return Math.abs(x1 - x2) + Math.abs(y1 - y2);
     }
 

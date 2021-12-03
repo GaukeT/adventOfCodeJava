@@ -1,38 +1,29 @@
 package nl.gauket.mission2019;
 
-import nl.gauket.common.Day;
+import nl.gauket.common.InputReader;
+import nl.gauket.common.NewDay;
 
 import static nl.gauket.common.Calculator.add;
 import static nl.gauket.common.Calculator.multiply;
-import static nl.gauket.common.InputReader.readInputAsIntArray;
-import static nl.gauket.common.ResultLogger.printResult;
 
-public class Day2 extends Day {
-    private static final int DAY = 2;
-
-    public static void main(String[] args) {
-        part1();
-        part2();
+public class Day2 extends NewDay {
+    @Override
+    public void before(int year, int day) {
+        INPUT_INT = InputReader.readInputAsIntArray(year, day, ",");
     }
 
-    private static void part1() {
-        start();
-        // part 1 //
-        int[] input = readInputAsIntArray(YEAR19, DAY, ",");
-        var result = runIntcodeProgram(input, 12, 2)[0];
-
-        printResult(DAY, 4945026, result);
-        stop();
+    @Override
+    public long[] solvePart1() {
+        var result = runIntcodeProgram(INPUT_INT.clone(), 12, 2)[0];
+        return new long[] {result, 4945026};
     }
 
-    private static void part2() {
-        start();
-        // part 2 //
+    @Override
+    public long[] solvePart2() {
+        var input1 = INPUT_INT.clone();
+        var input2 = INPUT_INT.clone();
 
         // constraint solver (z3)
-        int[] input1 = readInputAsIntArray(YEAR19, DAY, ",");
-        int[] input2 = readInputAsIntArray(YEAR19, DAY, ",");
-
         int r1 = runIntcodeProgram(input1, 12, 2)[0];
         int r2 = runIntcodeProgram(input2, 13, 2)[0];
 
@@ -44,9 +35,7 @@ public class Day2 extends Day {
         int n = val % c2;
 
         var result = 100 * v + n;
-
-        printResult(DAY, 5296, result);
-        stop();
+        return new long[] {result, 5296};
     }
 
     public static int[] runIntcodeProgram(int[] input, int noun, int verb) {

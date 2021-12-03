@@ -1,20 +1,23 @@
 package nl.gauket.mission2019;
 
-import nl.gauket.common.Day;
 import nl.gauket.common.InputReader;
+import nl.gauket.common.NewDay;
 
-import static nl.gauket.common.ResultLogger.printResult;
+public class Day1 extends NewDay {
+    @Override
+    public void before(int year, int day) {
+        INPUT_INTSTREAM = InputReader.readInputAsIntStream(year, day);
+    }
 
-public class Day1 extends Day {
-    private static final int DAY = 1;
+    @Override
+    public long[] solvePart1() {
+        var result = INPUT_INTSTREAM.reduce(0, (t, m) -> t + calculateFuelBy(m));
+        return new long[] {result, 3318604};
+    }
 
-    public static void main(String[] args) {
-        start();
-        int result = InputReader.readInputAsIntStream(YEAR19, DAY)
-                .reduce(0, (t, m) -> t + calculateFuelBy(m));
-
-        stop();
-        printResult(DAY, 3318604, result);
+    @Override
+    public long[] solvePart2() {
+        return new long[0];
     }
 
     public static int calculateFuelBy(int mass) {

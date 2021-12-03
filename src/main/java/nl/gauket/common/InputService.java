@@ -7,8 +7,10 @@ import java.net.URL;
 
 import static nl.gauket.common.InputWriter.checkIfInputExists;
 import static nl.gauket.common.InputWriter.writeToFile;
+import static nl.gauket.common.Timer.start;
+import static nl.gauket.common.Timer.stop;
 
-public class InputService extends Timer {
+public class InputService {
     private static final String URL = "https://adventofcode.com/%s/day/%s/input";
     private final String session = System.getProperty("session");
 

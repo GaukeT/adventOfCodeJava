@@ -1,6 +1,7 @@
 package nl.gauket.common;
 
 import java.util.List;
+import java.util.stream.IntStream;
 
 import static nl.gauket.common.ResultLogger.printResult;
 import static nl.gauket.common.Timer.start;
@@ -11,11 +12,13 @@ public abstract class NewDay implements iDay {
 
     protected String[] INPUT;
     protected List<String> INPUT_STR_LIST;
+    protected String[][] INPUT_STR_MATRIX;
     protected char[][] INPUT_CH_MATRIX;
     protected int[] INPUT_INT;
     protected long[] INPUT_LONG;
+    protected IntStream INPUT_INTSTREAM;
 
-    public void run(int year, boolean prepareDaily) {
+    public final void run(int year, boolean prepareDaily) {
         var className = this.getClass().getSimpleName();
         var day = Integer.parseInt(className.replace("Day", ""));
 
