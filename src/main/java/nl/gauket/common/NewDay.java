@@ -55,4 +55,8 @@ public abstract class NewDay implements iDay {
 
         printResult((long) part, expected, result);
     }
+
+    public static void print(String str) {
+        if (DEBUG) System.out.println(str);
+    }
 }
