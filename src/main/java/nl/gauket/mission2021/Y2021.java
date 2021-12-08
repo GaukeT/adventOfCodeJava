@@ -32,5 +32,6 @@ public class Y2021 {
         KNOWN_DAYS.add(new Day3());
         KNOWN_DAYS.add(new Day4());
         KNOWN_DAYS.add(new Day5());
+        KNOWN_DAYS.add(new Day6());
     }
 }
