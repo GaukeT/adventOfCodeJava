@@ -32,6 +32,7 @@ public class Day7 extends NewDay {
         for (int j = 0; j < horizontals.length; j++) {
             for (var i : input) {
                 horizontals[j] += cost(Math.abs(i - j), part);
+                if (horizontals[j] > winning) break;
             }
 
             winning = Math.min(horizontals[j], winning);
