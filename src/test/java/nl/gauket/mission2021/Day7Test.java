@@ -12,27 +12,15 @@ class Day7Test {
 
     @ParameterizedTest(name = "{index}, days: {1} - input: {0}")
     @MethodSource
-    void solve(int[] input, long expected) {
-        var result = Day7.solve(input);
+    void solve(int[] input, long expected, int part) {
+        var result = Day7.solve(input, part);
         assertEquals(expected, result);
     }
 
     private static Stream<Arguments> solve() {
         return Stream.of(
-                Arguments.of(new int[]{ 16,1,2,0,4,2,7,1,2,14 }, 37)
-        );
-    }
-
-    @ParameterizedTest(name = "{index}, days: {1} - input: {0}")
-    @MethodSource
-    void solve2(int[] input, long expected) {
-        var result = Day7.solve2(input);
-        assertEquals(expected, result);
-    }
-
-    private static Stream<Arguments> solve2() {
-        return Stream.of(
-                Arguments.of(new int[]{ 16,1,2,0,4,2,7,1,2,14 }, 168)
+                Arguments.of(new int[]{ 16,1,2,0,4,2,7,1,2,14 }, 37, 1),
+                Arguments.of(new int[]{ 16,1,2,0,4,2,7,1,2,14 }, 168, 2)
         );
     }
 }
