@@ -4,6 +4,7 @@ import nl.gauket.common.InputReader;
 import nl.gauket.common.NewDay;
 
 import java.util.Arrays;
+import java.util.HashMap;
 
 public class Day7 extends NewDay {
     @Override
@@ -28,10 +29,11 @@ public class Day7 extends NewDay {
 
         var horizontals = new int[input[input.length - 1] + 1];
         var winning = Integer.MAX_VALUE;
+        var cache = new HashMap<Integer, Integer>();
 
         for (int j = 0; j < horizontals.length; j++) {
             for (var i : input) {
-                horizontals[j] += cost(Math.abs(i - j), expensiveCost);
+                horizontals[j] += cost(Math.abs(i - j), expensiveCost, cache);
                 if (horizontals[j] > winning) break;
             }
 
@@ -41,13 +43,16 @@ public class Day7 extends NewDay {
         return winning;
     }
 
-    private static int cost(int dist, boolean expensiveCost) {
+    private static int cost(int dist, boolean expensiveCost, HashMap<Integer, Integer> cache) {
         if (!expensiveCost) return dist;
 
-        var result = 0;
+        var result = cache.getOrDefault(dist, 0);
 
-        for (int i = dist; i > 0; i--) {
-            result += i;
+        if (result == 0) {
+            for (int i = dist; i > 0; i--) {
+                result += i;
+            }
+            cache.put(dist, result);
         }
 
         return result;
