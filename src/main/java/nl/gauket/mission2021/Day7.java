@@ -13,17 +13,17 @@ public class Day7 extends NewDay {
 
     @Override
     public long[] solvePart1() {
-        var result = solve(INPUT_INT, 1);
+        var result = solve(INPUT_INT, false);
         return new long[]{result, 342534};
     }
 
     @Override
     public long[] solvePart2() {
-        var result = solve(INPUT_INT, 2);
+        var result = solve(INPUT_INT, true);
         return new long[]{result, 94004208};
     }
 
-    public static long solve(int[] input, int part) {
+    public static long solve(int[] input, boolean expensiveCost) {
         Arrays.sort(input); // O(n * log(n))
 
         var horizontals = new int[input[input.length - 1] + 1];
@@ -31,7 +31,7 @@ public class Day7 extends NewDay {
 
         for (int j = 0; j < horizontals.length; j++) {
             for (var i : input) {
-                horizontals[j] += cost(Math.abs(i - j), part);
+                horizontals[j] += cost(Math.abs(i - j), expensiveCost);
                 if (horizontals[j] > winning) break;
             }
 
@@ -41,8 +41,8 @@ public class Day7 extends NewDay {
         return winning;
     }
 
-    private static int cost(int dist, int part) {
-        if (part == 1) return dist;
+    private static int cost(int dist, boolean expensiveCost) {
+        if (!expensiveCost) return dist;
 
         var result = 0;
 
