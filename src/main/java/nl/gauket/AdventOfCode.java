@@ -7,16 +7,35 @@ import java.time.LocalDate;
 import java.time.Month;
 
 public class AdventOfCode {
+
+    private static final int YEAR = 2021;
+    private static final int DAY = -1;
+    private static final boolean PREPARE_DAILY = false;
+
     public static void main(String[] args) {
-        // runSpecificYearAndDay(2021, 1);
-        // runYear(2021);
-        runAll();
+        if (!isValidYear()) {
+            runAll();
+        } else {
+            if (!isValidDay()) {
+                runYear(YEAR);
+            } else {
+                runSpecificYearAndDay(YEAR, DAY);
+            }
+        }
+    }
+
+    private static boolean isValidDay() {
+        return DAY >= 1 && DAY <= 25;
+    }
+
+    private static boolean isValidYear() {
+        return YEAR >= 2015 && YEAR <= determineLatestAdventOfCode();
     }
 
     private static void runSpecificYearAndDay(int year, int day) {
         var obj = getDayInstanceOf(year, day);
         if (obj != null) {
-            obj.run(year, false);
+            obj.run(year, PREPARE_DAILY);
         }
     }
 
