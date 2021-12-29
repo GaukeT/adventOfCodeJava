@@ -12,15 +12,15 @@ class Day7Test {
 
     @ParameterizedTest(name = "{index}, days: {1} - input: {0}")
     @MethodSource
-    void solve(int[] input, long expected, int part) {
-        var result = Day7.solve(input, part);
+    void solve(int[] input, long expected, boolean expensiveCost) {
+        var result = Day7.solve(input, expensiveCost);
         assertEquals(expected, result);
     }
 
     private static Stream<Arguments> solve() {
         return Stream.of(
-                Arguments.of(new int[]{ 16,1,2,0,4,2,7,1,2,14 }, 37, 1),
-                Arguments.of(new int[]{ 16,1,2,0,4,2,7,1,2,14 }, 168, 2)
+                Arguments.of(new int[]{ 16,1,2,0,4,2,7,1,2,14 }, 37, false),
+                Arguments.of(new int[]{ 16,1,2,0,4,2,7,1,2,14 }, 168, true)
         );
     }
 }

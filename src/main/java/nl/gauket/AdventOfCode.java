@@ -1,5 +1,7 @@
 package nl.gauket;
 
+import nl.gauket.common.Generate;
+import nl.gauket.common.InputService;
 import nl.gauket.common.NewDay;
 
 import java.lang.reflect.InvocationTargetException;
@@ -8,9 +10,8 @@ import java.time.Month;
 
 public class AdventOfCode {
 
-    private static final int YEAR = 2021;
+    private static final int YEAR = -1;
     private static final int DAY = -1;
-    private static final boolean PREPARE_DAILY = false;
 
     public static void main(String[] args) {
         if (!isValidYear()) {
@@ -33,9 +34,15 @@ public class AdventOfCode {
     }
 
     private static void runSpecificYearAndDay(int year, int day) {
-        var obj = getDayInstanceOf(year, day);
+        var obj = getNewDayInstanceOf(year, day);
         if (obj != null) {
-            obj.run(year, PREPARE_DAILY);
+            obj.run(year, day);
+        } else if (isValidDay()) {
+            System.out.println("> WARNING: Specific class not found");
+            System.out.println("> INFO: Generate new Day... ");
+            Generate.newDay(year, day);
+            System.out.println("> INFO: Download inputFile...");
+            new InputService().prepareDailyInput(year, day);
         }
     }
 
@@ -57,7 +64,7 @@ public class AdventOfCode {
         return curr.getMonth().equals(Month.DECEMBER) ? curr.getYear() : curr.getYear() - 1;
     }
 
-    private static NewDay getDayInstanceOf(int year, int day) {
+    private static NewDay getNewDayInstanceOf(int year, int day) {
         try {
             return (NewDay) Class.forName("nl.gauket.mission" + year + ".Day" + day).getDeclaredConstructor().newInstance();
         } catch (InstantiationException | IllegalAccessException | InvocationTargetException | NoSuchMethodException e) {

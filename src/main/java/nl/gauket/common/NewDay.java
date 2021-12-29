@@ -18,21 +18,13 @@ public abstract class NewDay implements iDay {
     protected long[] INPUT_LONG;
     protected IntStream INPUT_INTSTREAM;
 
-    public final void run(int year, boolean prepareDaily) {
-        var className = this.getClass().getSimpleName();
-        var day = Integer.parseInt(className.replace("Day", ""));
-
-        // download input from Advent of code server if not already done
-        if (prepareDaily) {
-            new InputService().prepareDailyInput(year, day);
-        }
-
+    public final void run(int year, int day) {
         // by default load input in string array. Can be overridden in subclass
         start();
         this.before(year, day);
-        stop(className + ".before()");
+        stop(this.getClassname() + ".before()");
 
-        System.out.println("> Task :" + className + ".solve()");
+        System.out.println("> Task :" + this.getClassname() + ".solve()");
         // solve part 1
         start();
         this.after(this.solvePart1(), 1);
@@ -56,7 +48,11 @@ public abstract class NewDay implements iDay {
         printResult((long) part, expected, result);
     }
 
-    public static void print(String str) {
+    protected static void print(String str) {
         if (DEBUG) System.out.println(str);
+    }
+
+    private String getClassname() {
+        return this.getClass().getSimpleName();
     }
 }
