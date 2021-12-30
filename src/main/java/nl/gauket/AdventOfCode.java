@@ -14,10 +14,10 @@ public class AdventOfCode {
     private static final int DAY = -1;
 
     public static void main(String[] args) {
-        if (!isValidYear()) {
+        if (!isValidYear(YEAR)) {
             runAll();
         } else {
-            if (!isValidDay()) {
+            if (!isValidDay(DAY)) {
                 runYear(YEAR);
             } else {
                 runSpecificYearAndDay(YEAR, DAY);
@@ -25,24 +25,23 @@ public class AdventOfCode {
         }
     }
 
-    private static boolean isValidDay() {
-        return DAY >= 1 && DAY <= 25;
+    private static boolean isValidDay(int day) {
+        return day >= 1 && day <= 25;
     }
 
-    private static boolean isValidYear() {
-        return YEAR >= 2015 && YEAR <= determineLatestAdventOfCode();
+    private static boolean isValidYear(int year) {
+        return year >= 2015 && year <= determineLatestAdventOfCode();
     }
 
     private static void runSpecificYearAndDay(int year, int day) {
         var obj = getNewDayInstanceOf(year, day);
         if (obj != null) {
             obj.run(year, day);
-        } else if (isValidDay()) {
-            System.out.println("> WARNING: Specific class not found");
-            System.out.println("> INFO: Generate new Day... ");
-            Generate.newDay(year, day);
-            System.out.println("> INFO: Download inputFile...");
+        } else if (isValidYear(year) && isValidDay(day)) {
+            System.out.println("> WARNING :Day" + day + " not found");
             new InputService().prepareDailyInput(year, day);
+            System.out.println("> INFO :Generate new Day... ");
+            Generate.newDay(year, day);
         }
     }
 
@@ -70,7 +69,7 @@ public class AdventOfCode {
         } catch (InstantiationException | IllegalAccessException | InvocationTargetException | NoSuchMethodException e) {
             e.printStackTrace();
         } catch (ClassNotFoundException e) {
-            // e.printStackTrace();
+            // ignore exception null is checked later
         }
 
         return null;

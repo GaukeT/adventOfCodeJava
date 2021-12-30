@@ -31,14 +31,18 @@ public class Generate {
                 public class Day%d extends NewDay {
                     @Override
                     public long[] solvePart1() {
-                        var result = 0;
+                        var result = solve(INPUT.clone());
                         return new long[] {result};
                     }
                 
                     @Override
                     public long[] solvePart2() {
-                        var result = 0;
+                        var result = solve(INPUT.clone());
                         return new long[] {result};
+                    }
+                    
+                    public static long solve(String[] input) {
+                        return 0;
                     }
                 }""", year, day);
     }
