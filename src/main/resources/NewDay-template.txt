@@ -1,0 +1,21 @@
+package nl.gauket.mission%d;
+
+import nl.gauket.common.NewDay;
+
+public class Day%d extends NewDay {
+    @Override
+    public long[] solvePart1() {
+        var result = solve(INPUT.clone());
+        return new long[] {result};
+    }
+
+    @Override
+    public long[] solvePart2() {
+        var result = solve(INPUT.clone());
+        return new long[] {result};
+    }
+
+    public static long solve(String[] input) {
+        return 0;
+    }
+}
