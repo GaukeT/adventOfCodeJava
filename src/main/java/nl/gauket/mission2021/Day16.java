@@ -2,7 +2,7 @@ package nl.gauket.mission2021;
 
 import nl.gauket.common.NewDay;
 
-public class Day9 extends NewDay {
+public class Day16 extends NewDay {
     @Override
     public long[] solvePart1() {
         var result = solve(INPUT.clone());
